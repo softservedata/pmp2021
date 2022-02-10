@@ -9,10 +9,10 @@ int main()
 	cout << "b = ";
 	cin >> b;
 	//
-	/*
+	// /*
 	c = a + b;
 	cout << "c = " << c << endl;
-	*/
+	// */
 	/*
 	if (a > b)
 	{
