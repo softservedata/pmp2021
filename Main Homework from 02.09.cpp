@@ -7,7 +7,7 @@ int main()
 {
 	int a, b;
 
-	//Використання додаткової змінної:
+	//Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РґРѕРґР°С‚РєРѕРІРѕС— Р·РјС–РЅРЅРѕС—:
 
 	cout << "Additional variable:" << endl;
 	int f;
@@ -18,7 +18,7 @@ int main()
 	b = f;
 	cout << "New data: a = " << a << " b = " << b << endl << endl;
 
-	//Використання додавання та віднімання:
+	//Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РґРѕРґР°РІР°РЅРЅСЏ С‚Р° РІС–РґРЅС–РјР°РЅРЅСЏ:
 
 	cout << "Addition and subtraction:" << endl;
 	a = 4; b = 17;
@@ -28,7 +28,7 @@ int main()
 	a -= b;
 	cout << "New data: a = " << a << " b = " << b << endl << endl;
 
-	//Використання множення та ділення:
+	//Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РјРЅРѕР¶РµРЅРЅСЏ С‚Р° РґС–Р»РµРЅРЅСЏ:
 
 	cout << "Multiplication and division:" << endl;
 	float c = 2, d = 14.5;
@@ -38,7 +38,7 @@ int main()
 	c /= d;
 	cout << "New data: c = " << c << " d = " << d << endl << endl;
 
-	//Використання кон'юнкції та диз'юнкції:
+	//Р’РёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РєРѕРЅ'СЋРЅРєС†С–С— С‚Р° РґРёР·'СЋРЅРєС†С–С—:
 
 	cout << "Conjunction and disjunction:" << endl;
 	a = 5; b = 11;
@@ -48,7 +48,7 @@ int main()
 	a = (~a & b) | (a & ~b);
 	cout << "New data: a = " << a << " b = " << b << endl << endl;
 
-	//Зсув:
+	//Р—СЃСѓРІ:
 
 	cout << "Shift:" << endl;
 	a = 7; b = 9;
@@ -59,7 +59,7 @@ int main()
 	b = (short int)g;
 	cout << "New data: a = " << a << " b = " << b << endl << endl;
 
-    //Додавання по модулю 2:
+    //Р”РѕРґР°РІР°РЅРЅСЏ РїРѕ РјРѕРґСѓР»СЋ 2:
 
 	cout << "XOR:" << endl;
 	a = 6; b = 12;
