@@ -53,10 +53,10 @@ int main()
 	cout << "Shift:" << endl;
 	a = 7; b = 9;
 	cout << "Old data: a = " << a << " b = " << b << endl;
-	long long int g = a << 16 | b;
-	g = (int)g << 16 | g >> 16; 
-	a = g >> 16; 
-	b = (short int)g;
+	int long long g = a << 16 | b;
+	g = (int)g << 16 | g >> 16;
+	a = g >> 16;
+	b = (short)g;
 	cout << "New data: a = " << a << " b = " << b << endl << endl;
 
         //Додавання по модулю 2:
