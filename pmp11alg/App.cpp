@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int main()
+int main01()
 {
 	int a, b, c, max;
 	cout << "a = ";
