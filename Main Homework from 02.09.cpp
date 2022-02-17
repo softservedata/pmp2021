@@ -59,7 +59,7 @@ int main()
 	b = (short int)g;
 	cout << "New data: a = " << a << " b = " << b << endl << endl;
 
-    //Додавання по модулю 2:
+        //Додавання по модулю 2:
 
 	cout << "XOR:" << endl;
 	a = 6; b = 12;
