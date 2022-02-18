@@ -1,8 +1,9 @@
+
 #include <iostream>
 
 using namespace std;
 
-int main()
+int main01Add()
 {
 	short a, b, c;
 	cout << "a = ";
