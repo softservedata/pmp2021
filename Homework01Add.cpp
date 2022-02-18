@@ -47,5 +47,36 @@ int main01Add()
 	{
 		cout << a << ' ' << b << ' ' << c << endl;
 	}
+
+	short a, b, c, t;
+	cout << "a = ";
+	cin >> a;
+	cout << "b = ";
+	cin >> b;
+	cout << "c = ";
+	cin >> c;
+	cout << endl;
+
+	if (a > b)
+	{
+		t = a;
+		a = b;
+		b = t;
+	}
+	if (b > c)
+	{
+		t = b;
+		b = c;
+		c = t;
+	}
+	if (a > b)
+	{
+		t = a;
+		a = b;
+		b = t;
+	}
+
+	cout << a << ' ' << b << ' ' << c << endl;
+
 	return 0;
 }
