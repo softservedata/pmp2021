@@ -16,11 +16,5 @@ int main()
 		cout << "This year isn't leap" << endl;
 	}
 
-
-
-
-
-
-
 	return 0;
 }
