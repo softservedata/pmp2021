@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int main()
+int main02a()
 {
 	double a = 0;
 	double b = 0;
