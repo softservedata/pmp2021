@@ -36,5 +36,14 @@
     <ClCompile Include="App03d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lec03a.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lec03b.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lec03c.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

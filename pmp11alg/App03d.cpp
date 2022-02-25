@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int main()
+int main03d()
 {
 	double x = 0;
 	double p = 1;
