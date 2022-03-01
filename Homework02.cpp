@@ -3,9 +3,8 @@
 
 using namespace std;
 
-int main()
+int main02()
 {
-	/*
 	int year;
 
 	cout << "Enter year: ";
@@ -19,37 +18,5 @@ int main()
 	{
 		cout << "This is not leap year\n";
 	}
-	*/
-
-	short a, b, c, t;
-	cout << "a = ";
-	cin >> a;
-	cout << "b = ";
-	cin >> b;
-	cout << "c = ";
-	cin >> c;
-	cout << endl;
-
-	if (a > b)
-	{
-		t = a;
-		a = b;
-		b = t;
-	}
-	if (b > c)
-	{
-		t = b;
-		b = c;
-		c = t;
-	}
-	if (a > b)
-	{
-		t = a;
-		a = b;
-		b = t;
-	}
-
-	cout << a << ' ' << b << ' ' << c << endl;
-
 	return 0;
 }
