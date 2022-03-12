@@ -1,7 +1,7 @@
 # pmp2021
 
 
-> This is repository of PMP-11-12-13 МТП-11 groupі.
+> This is repository of PMP-11-12-13 МТП-11 group.
 
 ### List of branches
 
