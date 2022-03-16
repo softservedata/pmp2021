@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
 int main(){
-    int n,sum=0,prod=1,k=1,sn=1;
+    unsigned long long int n,sum=0,prod=1,k=1,sn=1;
+    cout<<"1 * (2 + 3) * (4 + 5 + 6) * ... * (... + n)"<<endl;
     cout<<"n=";
     cin>>n;
     for(int i=1;i<=n;i++){
