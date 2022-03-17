@@ -2,7 +2,7 @@
 //#include<cmath>
 using namespace std;
 
-int main03cl()
+int main03bl()
 {
 	double a;
 	double a0;

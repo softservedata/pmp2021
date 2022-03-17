@@ -145,6 +145,7 @@
     <ClCompile Include="App03b.cpp" />
     <ClCompile Include="App03c.cpp" />
     <ClCompile Include="App03d.cpp" />
+    <ClCompile Include="App04.cpp" />
     <ClCompile Include="Lec02.cpp" />
     <ClCompile Include="Lec03a.cpp" />
     <ClCompile Include="Lec03b.cpp" />

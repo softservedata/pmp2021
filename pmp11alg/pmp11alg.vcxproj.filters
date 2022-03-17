@@ -45,5 +45,8 @@
     <ClCompile Include="Lec03c.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="App04.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

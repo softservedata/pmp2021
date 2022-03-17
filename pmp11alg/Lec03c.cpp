@@ -2,7 +2,7 @@
 //#include<cmath>
 using namespace std;
 
-int main()
+int main03cl()
 {
 	unsigned int f0;
 	unsigned int f1;
