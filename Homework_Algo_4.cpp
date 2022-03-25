@@ -3,6 +3,7 @@ using namespace std;
 void reading(int** arr, int n, int m);
 void print(int** arr, int n ,int m);
 void sumus(int** arr1, int** arr2 ,int** arr3, int** arr4, int n, int m);
+void del(int** arr, int n);
 int main(){
     int n,m;
     cout<<"n="; cin>>n;
@@ -28,6 +29,11 @@ int main(){
     sumus(D, A, B, C, n, m);
     cout<<"mass D:"<<endl;
     print(D,n,m);
+    del(A, n);
+    del(B , n);
+    del(C, n);
+    del(D, n);
+    return 0;
 }
 void reading(int** arr, int n, int m){
     for(int i=0; i<n; i++){
@@ -51,4 +57,9 @@ void sumus(int** arr1, int** arr2 ,int** arr3, int** arr4, int n, int m){
             *(*(arr1+i)+j)=*(*(arr2+i)+j)+*(*(arr3+i)+j)+*(*(arr4+i)+j);
         }
     }
+}
+void del(int** arr, int n){
+    for (int i = 0; i < n; i++)
+        delete[] arr[i];
+    delete[] arr;
 }
