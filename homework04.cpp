@@ -47,9 +47,8 @@ int main() {
             a(m, std::vector<int>(n)),
             b(m, std::vector<int>(n)),
             c(m, std::vector<int>(n));
-    input_matrix(a);
-    input_matrix(b);
-    input_matrix(c);
+    for (auto &matrix: {&a, &b, &c})
+        input_matrix(*matrix);
     auto res = evaluate_sum_of_matrices(a, b, c); // приймає будь-яку кількість матриць
     std::cout << "Матриця D:\n";
     print_matrix(res);
