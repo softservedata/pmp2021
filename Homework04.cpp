@@ -51,7 +51,7 @@ void print_matrix(double** matrix, int n){
     }
 }
 
-int main(){
+int main04(){
     int n;
     cout << "Enter quantity of rows and columns:";
     cin >> n;

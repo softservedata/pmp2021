@@ -49,7 +49,7 @@ unsigned long long ThirdSequence(int &n){
     return sum;
 }
 
-int main()
+int main03()
 {
     int n = Cin();
     Cout(FirstSequence(n), "First sequence result: ");
