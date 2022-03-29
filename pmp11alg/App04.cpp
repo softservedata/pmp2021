@@ -94,7 +94,7 @@ CMax getMax(int** arr, int n)
 }
 
 
-int main()
+int main04a()
 {
 	// One Dimension
 	// Stack
