@@ -81,5 +81,11 @@
     <ClCompile Include="Lec05b.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AppTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="App06.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

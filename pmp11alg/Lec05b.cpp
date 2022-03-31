@@ -48,7 +48,7 @@ void tabPrint(Tabular* arr, int n)
 	cout << endl;
 }
 
-int main()
+int main05bl()
 {
 	double a, b, h;
 	int n = 0;
