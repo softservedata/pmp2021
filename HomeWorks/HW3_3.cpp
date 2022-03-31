@@ -5,7 +5,7 @@ int fact(int n,int l);
 
 int main()
 {
-    int n, sum = 0, temp_sum=1, count = 0, k = 1;
+    unsigned long long int n, sum = 0;
     cout << "n=";
     cin >> n;
     for (int i = 1; i <= n; i++) {
