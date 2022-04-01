@@ -91,6 +91,6 @@ int main()
 
 	cout <<"S = "<< sum_recurs(0, x) << endl;
 	
-
+	return 0;
 }
 
