@@ -51,7 +51,7 @@ double recursiveSum2(int n){
     else return n + recursiveSum2(n - 2);
 }
 
-int main(){
+int main05(){
     int n = Cin();
     cout << "For loop sin sum = " << SinSum1a(n) << endl;
     cout << "Recursive sin sum = " << SinSum1b(n) << endl;
