@@ -4,21 +4,21 @@
 #include <vector>
 
 template<typename Vec>
-auto input_martix(Vec &arr) {
+void input_martix(Vec &arr) {
     for (auto &row: arr)
         for (auto &el: row)
             std::cin >> el;
 }
 
 template<typename Vec>
-auto output_martix(const Vec &arr) {
+void output_martix(const Vec &arr) {
     for (const auto &row: arr)
         for (const auto &el: row)
             std::cout << std::setw(3) << el << (&el == &row.back() ? '\n' : ' ');
 }
 
 template<typename Vec>
-auto operator+(const Vec &arr1, const Vec &arr2) {
+Vec operator+(const Vec &arr1, const Vec &arr2) {
     Vec res(arr1);
     for (int i = 0; i < res.size(); ++i)
         for (int j = 0; j < res[0].size(); ++j)
@@ -27,7 +27,7 @@ auto operator+(const Vec &arr1, const Vec &arr2) {
 }
 
 template<typename Vec>
-auto operator-(const Vec &arr1, const Vec &arr2) {
+Vec operator-(const Vec &arr1, const Vec &arr2) {
     Vec res(arr1);
     for (int i = 0; i < res.size(); ++i)
         for (int j = 0; j < res[0].size(); ++j)
@@ -46,7 +46,7 @@ auto operator*(const std::vector<Row> &arr1, const std::vector<Row> &arr2) {
 }
 
 template<typename Vec>
-auto check_if_diagonally_dominant(const Vec &matrix) {
+bool check_if_diagonally_dominant(const Vec &matrix) {
     bool flag = true;
     for (int i = 0; i < matrix.size(); ++i) {
         double sum_of_abs_row{}, abs_diagonal_entry{};

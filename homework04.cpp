@@ -1,42 +1,35 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 
-template<typename T>
-std::vector<std::vector<T>> operator+(const std::vector<std::vector<T>> &matrix_a,
-                                      const std::vector<std::vector<T>> &matrix_b) {
-    std::vector<std::vector<T>> matrix_c(matrix_a);
-    for (int i = 0; i < matrix_b.size(); ++i)
-        for (int j = 0; j < matrix_b[0].size(); ++j)
-            matrix_c[i][j] += matrix_b[i][j];
-    return matrix_c;
+template<typename Vec>
+Vec operator+(const Vec &matrixA, const Vec &matrixB) {
+    Vec matrixC(matrixA);
+    for (int i = 0; i < matrixC.size(); ++i)
+        for (int j = 0; j < matrixC[0].size(); ++j)
+            matrixC[i][j] += matrixB[i][j];
+    return matrixC;
 }
 
-template<typename T>
-void enter_matrix(std::vector<std::vector<T>> &arr) {
+template<typename Vec>
+void enter_matrix(Vec &arr) {
     for (auto &row: arr)
         for (auto &el: row)
             std::cin >> el;
 }
 
-template<typename T>
-void print_matrix(const std::vector<std::vector<T>> &arr) {
+template<typename Vec>
+void print_matrix(const Vec &arr) {
     for (const auto &row: arr)
         for (const auto &el: row)
-            std::cout << el << (&el == &row.back() ? '\n' : ' ');
+            std::cout << std::setw(3) << el << (&el == &row.back() ? '\n' : ' ');
 }
 
-template<class T1, class ...T>
-T1 evaluate_sum_of_matrices(const T1 &first_matrix, const T &...Args) {
+template<class Vec, class ...T>
+Vec evaluate_sum_of_matrices(const Vec &first_matrix, const T &...Args) {
     if constexpr(sizeof ...(Args) > 0)
         return first_matrix + evaluate_sum_of_matrices(Args...);
     return first_matrix;
-}
-
-template<typename T>
-void input_matrix(std::vector<std::vector<T>> &arr) {
-    std::cout << "Введіть матрицю:\n";
-    enter_matrix(arr);
-    print_matrix(arr);
 }
 
 int main() {
@@ -47,10 +40,13 @@ int main() {
             a(m, std::vector<int>(n)),
             b(m, std::vector<int>(n)),
             c(m, std::vector<int>(n));
-    for (auto &matrix: {&a, &b, &c})
-        input_matrix(*matrix);
+    for (char i = 'A'; auto pMatrix: {&a, &b, &c}) { // since C++20
+        std::cout << "\nВведіть матрицю " << i++ << ":\n";
+        enter_matrix(*pMatrix);
+        print_matrix(*pMatrix);
+    }
     auto res = evaluate_sum_of_matrices(a, b, c); // приймає будь-яку кількість матриць
-    std::cout << "Матриця D:\n";
+    std::cout << "\nМатриця D:\n";
     print_matrix(res);
     return 0;
 }
