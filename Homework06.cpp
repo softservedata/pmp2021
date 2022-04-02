@@ -79,7 +79,7 @@ void matrix_delete(double **matrix, int &n){
     delete[] matrix;
 }
 
-int main(){
+int main06(){
     // Task 1
     int n = Cin();
     double **A = read_matrix(n), **B = read_matrix(n);
