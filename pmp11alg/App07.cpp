@@ -6,126 +6,167 @@ struct Matrix
 	int** arr;
 	int rows;
 	int columns;
+	//
+	// Destructor
+	~Matrix()
+	{
+		cout << "\nDestructor" << endl;
+		for (int i = 0; i < rows; i++)
+		{
+			delete[] arr[i];
+		}
+		delete[] arr;
+	}
 };
 
-void matrixGet4x3(Matrix& matrix)
+void matrixGet4x3Struct(Matrix*& matrix)
 {
-	matrix.arr = new int* [] { new int[] {0, 1, 1}, new int[] {1, 1, 1}, new int[] {1, 2, 1}, new int[] {1, 1, 2} };
-	matrix.rows = 4;
-	matrix.columns = 3;
+	matrix = new Matrix();
+	matrix->arr = new int* [] { new int[] {0, 1, 1}, new int[] {1, 1, 1}, new int[] {1, 2, 1}, new int[] {1, 1, 2} };
+	(*matrix).rows = 4;
+	matrix->columns = 3;
 }
 
-void matrixGet4x3(int**& matrix, int& countRows, int& countColumns)
+void matrixGet2x4Struct(Matrix*& matrix)
 {
-	matrix = new int* [] { new int[] {0, 1, 1}, new int[] {1, 1, 1}, new int[] {1, 2, 1}, new int[] {1, 1, 2} };
-	countRows = 4;
-	countColumns = 3;
+	matrix = new Matrix();
+	matrix->arr = new int* [] { new int[] {1, 1, 0, 0}, new int[] {0, 1, 0, 1} };
+	matrix->rows = 2;
+	matrix->columns = 4;
 }
 
-void matrixGet2x4(int**& matrix, int& countRows, int& countColumns)
+void matrixReadStruct(Matrix*& matrix, int countRows = 0, int countColumns = 0)
 {
-	matrix = new int* [] { new int[] {1, 1, 0, 0}, new int[] {0, 1, 0, 1} };
-	countRows = 2;
-	countColumns = 4;
-}
-
-void matrixRead(int**& matrix, int& countRows, int& countColumns)
-{
+	matrix = new Matrix();
 	cout << "\nInput new Matrix" << endl;
 	if (countRows <= 0)
 	{
 		do {
 			cout << "countRows = ";
-			cin >> countRows;
-		} while (countRows < 1);
+			cin >> matrix->rows;
+		} while (matrix->rows < 1);
+	}
+	else
+	{
+		matrix->rows = countRows;
 	}
 	if (countColumns <= 0)
 	{
 		do {
 			cout << "countColumns = ";
-			cin >> countColumns;
-		} while (countColumns < 1);
+			cin >> matrix->columns;
+		} while (matrix->columns < 1);
+	}
+	else
+	{
+		matrix->columns = countColumns;
 	}
 	//
-	cout << "Input Matrix with " << countRows << " rows and " << countColumns << " columns" << endl;
-	matrix = new int* [countRows];
-	for (int i = 0; i < countRows; i++)
+	cout << "Input Matrix with " << matrix->rows << " rows and " << matrix->columns << " columns" << endl;
+	matrix->arr = new int* [matrix->rows];
+	for (int i = 0; i < matrix->rows; i++)
 	{
-		matrix[i] = new int[countColumns];
-		for (int j = 0; j < countColumns; j++)
+		matrix->arr[i] = new int[matrix->columns];
+		for (int j = 0; j < matrix->columns; j++)
 		{
 			cout << "matrix[" << i << "][" << j << "] = ";
-			cin >> matrix[i][j];
+			cin >> matrix->arr[i][j];
 		}
 	}
 }
 
-void matrixDelete(int** matrix, int countRows, int countColumns)
+void matrixDeleteStruct(Matrix* matrix)
 {
-	for (int i = 0; i < countRows; i++)
-	{
-		delete[] matrix[i];
-	}
-	delete[] matrix;
+	delete matrix;
 }
 
-void matrixPrint(int** matrix, int countRows, int countColumns, const char* message)
+void matrixPrintStruct(Matrix* matrix, const char* message)
 {
 	cout << "\nMatrix " << message << endl;
-	for (int i = 0; i < countRows; i++)
+	for (int i = 0; i < matrix->rows; i++)
 	{
-		for (int j = 0; j < countColumns; j++)
+		for (int j = 0; j < matrix->columns; j++)
 		{
-			cout << matrix[i][j] << "\t ";
-			//cout << *(*(matrix + i) + j) << "  ";
+			cout << matrix->arr[i][j] << "\t ";
+			//cout << *(*((*matrix).arr + i) + j) << "  ";
 		}
 		cout << endl;
 	}
 }
 
-void matrixMultiply(int**& c, int** a, int** b, int m, int k, int n)
+void matrixMultiplyStruct(Matrix*& c, Matrix*& a, Matrix*& b)
 {
+	int m = a->rows;
+	int k = a->columns;
+	int n = b->columns;
+	//
+	if (k > b->rows)
+	{
+		k = b->rows;
+	}
+	//
+	c = new Matrix();
 	int sum = 0;
-	c = new int* [m];
+	c->arr = new int* [m];
 	for (int i = 0; i < m; i++)
 	{
-		c[i] = new int[n];
+		c->arr[i] = new int[n];
 		for (int j = 0; j < n; j++)
 		{
 			sum = 0;
 			for (int l = 0; l < k; l++)
 			{
-				sum = sum + a[i][l] * b[l][j];
+				sum = sum + a->arr[i][l] * b->arr[l][j];
 			}
-			c[i][j] = sum;
+			c->arr[i][j] = sum;
 		}
 	}
+	c->rows = m;
+	c->columns = n;
 }
 
-int main07a()
+int main()
 {
-	int** a = NULL; // NULL = 0
-	int** b = NULL;
-	int** c = NULL;
-	int m = 0;
-	int k = 0;
-	int n = 0;
+	Matrix* a = NULL; // NULL = 0
+	Matrix* b = NULL;
+	Matrix* c = NULL;
 	//
-	//matrixRead(a, m, k);
-	//matrixRead(b, k, n);
-	matrixGet2x4(a, m, k);
-	matrixGet4x3(b, k, n);
+	matrixReadStruct(a);
+	matrixReadStruct(b, a->columns);
+	//matrixGet2x4Struct(a);
+	//matrixGet4x3Struct(b);
 	//
-	matrixMultiply(c, a, b, m, k, n);
+	matrixMultiplyStruct(c, a, b);
 	//
-	matrixPrint(a, m, k, "A");
-	matrixPrint(b, k, n, "B");
-	matrixPrint(c, m, n, "C");
+	matrixPrintStruct(a, "A");
+	matrixPrintStruct(b, "B");
+	matrixPrintStruct(c, "C");
 	// 
 	//
-	matrixDelete(a, m, k);
-	matrixDelete(b, k, n);
-	matrixDelete(c, m, n);
+	matrixDeleteStruct(a);
+	matrixDeleteStruct(b);
+	matrixDeleteStruct(c);
+	//
+	// Create in Heap
+	//Matrix* matr = new Matrix();
+	//delete matr;
+	//
+	// Create in Stack
+	//Matrix matr;
+	//
+	/*
+	int k = 123;
+	cout << "k = " << k << endl;
+	//
+	int& k2 = k;
+	k2 = 456;
+	cout << "k = " << k << endl;
+	//
+	int* k3;
+	k3 = &k;
+	*k3 = 678;
+	cout << "k = " << k << endl;
+	*/
 	//
 	cout << "\ndone" << endl;
 	system("pause");

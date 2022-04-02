@@ -152,8 +152,8 @@
     <ClCompile Include="App05b.cpp" />
     <ClCompile Include="App05c.cpp" />
     <ClCompile Include="App05d.cpp" />
-    <ClCompile Include="App06.cpp" />
-    <ClCompile Include="AppTest.cpp" />
+    <ClCompile Include="App06a.cpp" />
+    <ClCompile Include="App07.cpp" />
     <ClCompile Include="Lec02.cpp" />
     <ClCompile Include="Lec03a.cpp" />
     <ClCompile Include="Lec03b.cpp" />
@@ -165,6 +165,7 @@
     <ClCompile Include="Lec04e.cpp" />
     <ClCompile Include="Lec05.cpp" />
     <ClCompile Include="Lec05b.cpp" />
+    <ClCompile Include="Lec06.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -81,10 +81,13 @@
     <ClCompile Include="Lec05b.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AppTest.cpp">
+    <ClCompile Include="App07.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="App06.cpp">
+    <ClCompile Include="App06a.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lec06.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
