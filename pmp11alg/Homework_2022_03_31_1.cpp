@@ -1,30 +1,29 @@
 #include <iostream>
-using namespace std;
 
 int main() {
-  int n, m;
-  cout << "(a-b)^2 = a^2 - 2ab + b^2"<<endl;
-  cout << "enter matrix size, n:"; cin >> n;
+  int n;
+  std::cout << "(a-b)^2 = a^2 - 2ab + b^2"<<std::endl;
+  std::cout << "enter matrix size, n:"; std::cin >> n;
   int matrA[n][n], matrB[n][n];
   int res_matr_a[n][n], res_matr_b[n][n], mult_res[n][n], fin_res[n][n];
   
-  cout<<"Enter Elements of First Matrix: "<<endl;
+  std::cout<<"Enter Elements of First Matrix: "<<std::endl;
   for(int i=0; i<n; i++){
     for(int j=0; j<n; j++) {
-      cout<<"matrix element["<<i<<"]["<<j<<"]: ";    
-      cin>>matrA[i][j];
+      std::cout<<"matrix element["<<i<<"]["<<j<<"]: ";    
+      std::cin>>matrA[i][j];
     }
   }
 
-  cout<<"Enter Elements of Secont Matrix: "<<endl;
+  std::cout<<"Enter Elements of Secont Matrix: "<<std::endl;
   for(int i=0; i<n; i++){
     for(int j=0; j<n; j++) {
-      cout<<"matrix element["<<i<<"]["<<j<<"]: ";   
-      cin>>matrB[i][j];
+      std::cout<<"matrix element["<<i<<"]["<<j<<"]: ";   
+      std::cin>>matrB[i][j];
     }
   }
 
-
+ 
   // a^2
   for (int i = 0; i < n; i++){
     for (int j = 0; j < n; j++){
@@ -52,16 +51,16 @@ int main() {
     }
   }
 
+
   //a^2 - 2ab + b^2
   for(int i=0; i<n; i++){
       for(int j=0; j<n; j++)
         fin_res[i][j] = res_matr_a[i][j]-mult_res[i][j]+res_matr_b[i][j];
   }
-
     
   for (int i = 0; i < n; i++){
     for (int j = 0; j < n; j++)
-      cout << fin_res[i][j] << " ";
-    cout << endl;
+      std::cout << fin_res[i][j] << " ";
+    std::cout << std::endl;
   }
 }
