@@ -18,12 +18,9 @@ int main() {
     
     for (int h=0; h<n; h++){
       if (h!=i  &&  std::abs(matr[i][i]) < std::abs(matr[i][h])) {
-        std::cout<<"Matrix does not possess diagonal advantage";
-        break;
+        std::cout<<"Matrix does not possess diagonal advantage"; return 0;
       }  
-      else if ((i+1==n) && (h+1==n)){
-        std::cout<<"Matrix possess diagonal advantage. Congrat!"; 
-      }
     }
   }
+  std::cout<<"Matrix possess diagonal advantage. Congrat!"; 
 }
