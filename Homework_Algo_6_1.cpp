@@ -6,6 +6,7 @@ void simplecreating(int**& matr, int n);
 void subtraction(int**& matr1, int**&matr2, int**& matr3, int n);
 int elemofmultiply(int**& matr1, int**&matr2, int n, int k, int p);
 void multiplying(int**& matr1, int**& matr2, int**& matr3, int n);
+void deleting(int**& matr, int n);
 int main(){
     int n;
     do{
@@ -23,6 +24,10 @@ int main(){
     subtraction(A, B, C, n);
     multiplying(C, C, D, n);
     print(D, n, "(A-B)**2");
+    deleting(A, n);
+    deleting(B, n);
+    deleting(C, n);
+    deleting(D, n);
     return 0;
 }
 void creating(int**& matr, int n, const char* message){
@@ -73,4 +78,10 @@ void multiplying(int**& matr1, int**& matr2, int**& matr3, int n){
             matr3[i][j]=elemofmultiply(matr1, matr2, n, i, j);
         }
     }
+}
+void deleting(int**& matr, int n){
+    for(int i=0; i<n; i++){
+        delete[] matr[i];
+    }
+    delete[] matr;
 }

@@ -4,6 +4,7 @@ using namespace std;
 void creating(int**& matr, int n, const char* message);
 int checkingrow(int*& arr, int n, int k);
 int checkingmatr(int**& matr, int n);
+void deleting(int**& matr, int n);
 int main(){
     int n;
     do{
@@ -15,6 +16,7 @@ int main(){
     cout<<endl;
     checkingmatr(A, n);
     cout<<endl<<endl;
+    deleting(A, n);
     return 0;
 }
 void creating(int**& matr, int n, const char* message){
@@ -47,4 +49,10 @@ int checkingmatr(int**& matr, int n){
     }
     cout<<"Diagonal advantage in this matrix";
     return 0;
+}
+void deleting(int**& matr, int n){
+    for(int i=0; i<n; i++){
+        delete[] matr[i];
+    }
+    delete[] matr;
 }
