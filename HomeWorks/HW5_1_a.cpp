@@ -13,6 +13,7 @@ int main() {
     cout << "sin1 " << sin(1) << endl << "sin2 " << sin(sin(1)) + sin(2) << endl << "sin3 " << sin(sin(sin(1))) + sin(sin(2)) + sin(3) << endl;
     cout << "sin4 " << sin(sin(sin(sin(1)))) + sin(sin(sin(2))) + sin(sin(3)) + sin(4)<< endl;
     cout << "rec_sin = " <<rec_sin2(n,k) << endl;
+    system("PAUSE");
     return 0;
 }
 
