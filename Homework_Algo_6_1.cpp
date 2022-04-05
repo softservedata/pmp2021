@@ -8,6 +8,7 @@ int elemofmultiply(int**& matr1, int**&matr2, int n, int k, int p);
 void multiplying(int**& matr1, int**& matr2, int**& matr3, int n);
 void deleting(int**& matr, int n);
 int main(){
+    cout<<"counting (A-B)**2"<<endl;
     int n;
     do{
         cout<<"n>0 n int n=";

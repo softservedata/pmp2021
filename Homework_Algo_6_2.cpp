@@ -6,6 +6,7 @@ int checkingrow(int*& arr, int n, int k);
 int checkingmatr(int**& matr, int n);
 void deleting(int**& matr, int n);
 int main(){
+    cout<<"checking diagonal advantage of matrix"<<endl;
     int n;
     do{
         cout<<"n>0 n int n=";
