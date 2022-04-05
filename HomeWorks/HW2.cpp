@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int main(){
+int main02(){
     int year;
     cout << "year : ";
     cin >> year;
