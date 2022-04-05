@@ -6,7 +6,7 @@ void print_matr(int n, int** matrix);
 void sum_matr(int** matr1, int** matr2, int** matr3, int** matr_result, int n);
 void fill_matr(int n, int** matrix);
 
-int main()
+int main05()
 {
     int n;
     cout << "n=";

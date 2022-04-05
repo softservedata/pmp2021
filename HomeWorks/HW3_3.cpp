@@ -3,7 +3,7 @@ using namespace std;
 
 int fact(int n,int l);
 
-int main()
+int main05()
 {
     unsigned long long int n, sum = 0;
     cout << "n=";

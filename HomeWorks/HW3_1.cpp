@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int main()
+int main03()
 {
     int n, sum = 1, temp_sum = 0, count = 0, l = 1;
     cout << "n=";

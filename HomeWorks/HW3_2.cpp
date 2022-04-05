@@ -3,7 +3,7 @@ using namespace std;
 
 int fact(int n);
 
-int main()
+int main04()
 {
     int n, sum = 0, factor_sum, count = 0, l = 1;
     cout << "n=";
