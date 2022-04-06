@@ -72,4 +72,5 @@ int main() {
     cout << "Result " << endl;
     if (Symetric(B,m))cout << "True, matrix is symetric" << endl;
     else cout << "false, matrix not symetric" << endl;
+delete_matr(B, m, m);
 }
