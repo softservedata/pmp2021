@@ -90,5 +90,11 @@
     <ClCompile Include="Lec06.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="App08.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="App08b.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -62,7 +62,7 @@ double x2(double x)
 	return x * x;
 }
 
-double getIntegral(double a, double b, int n)
+double getIntegral(double (*f)(double), double a, double b, int n)
 {
 	double x;
 	double h = (b - a) / n;
@@ -70,7 +70,7 @@ double getIntegral(double a, double b, int n)
 	for (int i = 0; i < n; i++)
 	{
 		x = a + i * h;
-		sum = sum + x1(x);
+		sum = sum + f(x);
 	}
 	return sum * h;
 }
@@ -142,7 +142,15 @@ int main06al()
 	double a = 1;
 	double b = 2;
 	int n = 1000;
-	cout << "Integral = " << getIntegral(a, b, n) << endl;
+	cout << "Integral = " << getIntegral(x1, a, b, n) << endl;
+	cout << "Integral = " << getIntegral(x2, a, b, n) << endl;
+	cout << "Integral = " << getIntegral([](double x) {return 2 * x; }, a, b, n) << endl;
+	//
+	double (*pf)(double);
+	pf = x1;
+	cout << "x1(2) = " << pf(2) << endl;
+	pf = &x2;
+	cout << "x2(2) = " << pf(2) << endl;
 	//
 	cout << "\ndone" << endl;
 	system("pause");

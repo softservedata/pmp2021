@@ -125,7 +125,7 @@ void matrixMultiplyStruct(Matrix*& c, Matrix*& a, Matrix*& b)
 	c->columns = n;
 }
 
-int main()
+int main07a()
 {
 	Matrix* a = NULL; // NULL = 0
 	Matrix* b = NULL;
