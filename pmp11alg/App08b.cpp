@@ -63,7 +63,7 @@ bool isEqual(int* hash1, int* hash2, int n)
 	return result;
 }
 
-int main()
+int main08b()
 {
 	int n1 = 8;
 	int n2 = 5;
