@@ -42,7 +42,7 @@ auto hashCode(const T arg, const T delta) {
 }
 
 template<typename T>
-auto get_hash_size(const vector<T> &a, const vector<T> &b , const T delta) {
+auto get_hash_size(const vector<T> &a, const vector<T> &b, const T delta) {
     auto max_el = max(*max_element(a.begin(), a.end()), *max_element(b.begin(), b.end()));
     return min(hashCode(max_el, delta) + 1, p);
 }
