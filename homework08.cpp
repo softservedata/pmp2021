@@ -8,21 +8,21 @@
 using namespace std;
 
 template<typename T>
-auto enter_array(vector<T> &arr) {
+void enter_array(vector<T> &arr) {
     for (auto &el: arr)
         cin >> el;
 }
 
 template<typename T>
-auto print_array(const vector<T> &arr) {
+void print_array(const vector<T> &arr) {
     for (const auto &el: arr)
         cout << el << (&el == &arr.back() ? '\n' : ' ');
 }
 
 template<typename T>
-auto getArray() {
+vector<T> getArray() {
     size_t n{};
-    cout << "Enter size of array: ";
+    cout << "Enter size of array (>0): ";
     cin >> n;
     vector<T> arr(n);
     cout << "Enter array: ";
@@ -32,23 +32,23 @@ auto getArray() {
 }
 
 template<typename T>
-auto get_delta(const vector<T> &a, const vector<T> &b) {
+T get_delta(const vector<T> &a, const vector<T> &b) {
     return -min(*min_element(a.begin(), a.end()), *min_element(b.begin(), b.end()));
 }
 
 template<typename T>
-auto hashCode(const T arg, const T delta) {
-    return static_cast<size_t>((arg + delta) * precision);
+constexpr size_t hashCode(const T arg, const T delta) noexcept {
+    return static_cast<size_t>((arg + delta) * static_cast<size_t>(precision));
 }
 
 template<typename T>
-auto get_hash_size(const vector<T> &a, const vector<T> &b, const T delta) {
+size_t get_hash_size(const vector<T> &a, const vector<T> &b, const T delta) {
     auto max_el = max(*max_element(a.begin(), a.end()), *max_element(b.begin(), b.end()));
     return min(hashCode(max_el, delta) + 1, static_cast<size_t>(p));
 }
 
 template<typename T>
-auto get_hash_array(const vector<T> &arr, const T delta, const size_t hash_size, bool out = false) {
+vector<bool> get_hash_array(const vector<T> &arr, const T delta, const size_t hash_size, bool out = false) {
     vector<bool> hash(hash_size); // optimization , 1 bit not byte per element
     for (const auto &el: arr)
         hash.at(hashCode(el, delta) % p) = true; // collisions are possible
