@@ -21,7 +21,7 @@ auto print_array(const vector<T> &arr) {
 
 template<typename T>
 auto getArray() {
-    int n{};
+    size_t n{};
     cout << "Enter size of array: ";
     cin >> n;
     vector<T> arr(n);
@@ -38,17 +38,17 @@ auto get_delta(const vector<T> &a, const vector<T> &b) {
 
 template<typename T>
 auto hashCode(const T arg, const T delta) {
-    return static_cast<int>((arg + delta) * precision);
+    return static_cast<size_t>((arg + delta) * precision);
 }
 
 template<typename T>
 auto get_hash_size(const vector<T> &a, const vector<T> &b, const T delta) {
     auto max_el = max(*max_element(a.begin(), a.end()), *max_element(b.begin(), b.end()));
-    return min(hashCode(max_el, delta) + 1, p);
+    return min(hashCode(max_el, delta) + 1, static_cast<size_t>(p));
 }
 
 template<typename T>
-auto get_hash_array(const vector<T> &arr, const T delta, const int hash_size, bool out = false) {
+auto get_hash_array(const vector<T> &arr, const T delta, const size_t hash_size, bool out = false) {
     vector<bool> hash(hash_size); // optimization , 1 bit not byte per element
     for (const auto &el: arr)
         hash.at(hashCode(el, delta) % p) = true; // collisions are possible
