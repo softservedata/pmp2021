@@ -31,7 +31,8 @@ int main()
     for(int i = 0; i < n; i++){
       for(int j = 0; j < n; j++){
          matrix_sum[i][j] = matrix1[i][j] + matrix2[i][j] + matrix3[i][j];
-         cout <<"сума матриць = "<< matrix_sum[i][j]  ;
+        
+         cout << matrix_sum[i][j]<<" "  ;
       }
       cout << endl;
    }
