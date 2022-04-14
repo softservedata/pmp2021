@@ -107,7 +107,7 @@ void sortByMax(int* arr, int n)
 	}
 }
 
-int main()
+int main08al()
 {
 	int* arr = NULL;
 	int n = 0;
