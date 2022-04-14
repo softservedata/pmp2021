@@ -88,8 +88,6 @@ int main(){
     auto delta = get_delta(get_min(arr1, n1), get_min(arr2, n2));
     auto hash_size = get_hash_size(get_max(arr1, n1), get_max(arr2, n2), delta);
 
-    cout << hash_size << ' ' << delta << endl;
-
     double *hash1 = create_hash(hash_size, n1, delta, arr1);
     double *hash2 = create_hash(hash_size, n2, delta, arr2);
 
