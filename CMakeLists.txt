@@ -3,4 +3,4 @@ project(pmp2021)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(pmp2021 Homework_Algo_7_2.cpp)
+add_executable(pmp2021 Homework_Algo_8.cpp)
