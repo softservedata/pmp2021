@@ -30,7 +30,7 @@ int main() {
     cout << "Enter square matrix A[n*n]:\n";
     input_matrix(a);
     output_matrix(a);
-    ranges::sort(a);
+    ranges::sort(a); // C++20
     cout << "Matrix A sorted by first column:\n";
     output_matrix(a);
     return 0;
