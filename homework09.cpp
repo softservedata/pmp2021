@@ -23,7 +23,7 @@ void output_matrix(const Vec &arr) {
 // Прочитати з клавіатури квадратну матрицю.
 // Посортувати рядки матриці по зростанню на основі значень елементів першого стовпчика
 int main() {
-    int n{};
+    size_t n{};
     cout << "Enter n: ";
     cin >> n;
     vector<vector<int>> a(n, vector<int>(n));
