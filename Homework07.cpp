@@ -68,7 +68,7 @@ bool is_symmetrical_matrix(MyMatrix *& matrix){
     return true;
 }
 
-int main(){
+int main07(){
     MyMatrix* a = NULL;
     MyMatrix* b = NULL;
 

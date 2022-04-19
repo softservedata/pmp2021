@@ -79,7 +79,7 @@ int Cin(){
     return n;
 }
 
-int main(){
+int main08(){
     int n1 = Cin();
     auto *arr1 = read_array(n1);
     int n2 = Cin();
