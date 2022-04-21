@@ -49,7 +49,7 @@ void creating(double*& arr, int n, const char* message){
     arr=new double[n];
     cout<<"reading array  "<<message<<endl;
     for(int i=0; i<n; i++){
-        cout<<message<<"["<<i<<"]=";
+        cout<<message<<"["<<i+1<<"]=";
         cin>>arr[i];
     }
     cout<<endl;
@@ -107,7 +107,12 @@ int make_hash_elem(double arg, int delta){
 
 void making_hash_with_elems(int*& hash, double*& arr, int n, int delta){
     for (int i = 0; i<n; i++){
-        hash[make_hash_elem(arr[i], delta)]=(int)((arr[i])*multiplyer);
+        if(arr[i]==0){
+            hash[make_hash_elem(arr[i], delta)]=1;
+        }
+        else{
+            hash[make_hash_elem(arr[i], delta)]=(int)((arr[i])*multiplyer);
+        }
     }
 }
 
