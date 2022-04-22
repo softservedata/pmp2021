@@ -18,7 +18,6 @@ void readArr(int*& arr, int& n)
 		cout << "n = ";
 		cin >> n;
 	} while (n < 1);
-
 	//
 	cout << "Input Array with n = " << n << endl;
 	arr = new int[n];
@@ -87,7 +86,8 @@ void merge(int* arr, int p, int q, int r)
 		arr[p + i] = arrtemp[i]; // O(n)
 	}
 	//
-	delete[] arrtemp;
+	deleteArr(arrtemp);
+	//delete[] arrtemp;
 }
 
 // Overload
@@ -116,7 +116,8 @@ void sortByMerge(int* arr, int n)
 	cout << "\t\tsorted done" << endl;
 }
 
-int main()
+int main09a()
+//int main()
 {
 	int* arr = NULL;
 	int n = 0;
