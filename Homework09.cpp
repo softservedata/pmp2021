@@ -49,36 +49,69 @@ int* first_column(int** &matrix, int &n){
     return array;
 }
 
-int* sort_by_bubble(int *&arr, int &n){
-    int temp1 = 0, temp2 = 0;
-    bool is_sorted = false;
-    int* i_arr = new int[n];
+void merge(int *arr,int* i_arr, int p, int q, int r){
+    int n = r - p + 1;
+    int *arr_temp = new int[n];
+    int* i_arr_temp = new int[n];
+
+    int ip = p, iq = q + 1;
+    int current1 = 0, current2 = 0;
 
     for (int i = 0; i < n; ++i){
-        i_arr[i] = i;
-    }
-
-    for (int i = 0; !is_sorted && (i < n - 1); ++i){
-        is_sorted = true;
-        for (int j = 0; j < n - i - 1; ++j){
-            if (arr[j] > arr[j + 1]){
-                temp1 = arr[j];
-                temp2 = i_arr[j];
-                arr[j] = arr[j + 1];
-                i_arr[j] = i_arr[j + 1];
-                arr[j + 1] = temp1;
-                i_arr[j + 1] = temp2;
-                is_sorted = false;
+        if (ip <= q && iq <= r){
+            if (arr[ip] < arr[iq]){
+                current1 = arr[ip];
+                current2 = i_arr[ip];
+                ip++;
+            }
+            else{
+                current1 = arr[iq];
+                current2 = i_arr[iq];
+                iq++;
             }
         }
+        else if(ip <= q){
+            current1 = arr[ip];
+            current2 = i_arr[ip];
+            ip++;
+        }
+        else{
+            current1 = arr[iq];
+            current2 = i_arr[iq];
+            iq++;
+        }
+        arr_temp[i] = current1; // O(n)
+        i_arr_temp[i] = current2;
     }
-    return i_arr;
+
+    for (int i = 0; i < n; ++i){
+        arr[p + i] = arr_temp[i]; // O(n)
+        i_arr[p + i] = i_arr_temp[i];
+    }
+    delete [] arr_temp;
+    delete [] i_arr_temp;
+}
+
+void sort_by_merge(int *arr, int* i_arr, int p, int r){
+    if (p < r){
+        int q = (p + r) / 2;
+        //cout << "start index = " << p << " middle index = " << q << " last index = " << r << endl;
+        sort_by_merge(arr,i_arr, p, q);
+        sort_by_merge(arr,i_arr, q + 1, r);
+        //
+        merge(arr,i_arr, p, q, r);
+    } //else cout << "\tstart index = " << p << " last index = " << r << " element = " << arr[p] << endl;
 }
 
 int** matrix_sorted_by_columns(int** matrix, int &n){
 
     int* first_colum = first_column(matrix, n);
-    int* i_arr =  sort_by_bubble(first_colum, n);
+    int* i_arr = new int[n];
+    for (int i = 0; i < n; ++i){
+        i_arr[i] = i;
+    }
+
+    sort_by_merge(first_colum, i_arr, 0, n - 1);
 
     int** new_matrix = new int*[n];
     for (int i = 0; i < n; ++i){
