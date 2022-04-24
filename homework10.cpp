@@ -11,7 +11,7 @@ vector<int> disc, low; // час відкриття вершин; масив д�
 vector<pair<int, int>> bridges;
 int timer = 0;
 
-void dfs(int v, int p = -1) {
+void dfs(int v, int p = -1) { // алгоритм Тар'яна (Tarjan's algorithm)
     visited[v] = true;
     disc[v] = low[v] = timer++;
     for (int to = 0; to < incidence_matrix.size(); ++to)
