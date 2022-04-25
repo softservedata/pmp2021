@@ -34,10 +34,9 @@ void find_bridges() {
     disc.assign(incidence_matrix.size(), -1);
     low.assign(incidence_matrix.size(), -1);
     bridges.reserve(incidence_matrix.size() - 1); // max n - 1 для дерев
-    for (int i = 0; i < incidence_matrix.size(); ++i) { // якщо ліс
+    for (int i = 0; i < incidence_matrix.size(); ++i) // якщо ліс
         if (!visited[i])
             dfs(i);
-    }
 }
 
 // Для заданого зв'язного графа знайти всі мости. Граф представити за допомогою матриці суміжності.
