@@ -158,6 +158,7 @@
     <ClCompile Include="App08b.cpp" />
     <ClCompile Include="App09.cpp" />
     <ClCompile Include="App10.cpp" />
+    <ClCompile Include="App11.cpp" />
     <ClCompile Include="Lec02.cpp" />
     <ClCompile Include="Lec03a.cpp" />
     <ClCompile Include="Lec03b.cpp" />
