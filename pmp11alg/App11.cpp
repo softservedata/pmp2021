@@ -152,7 +152,7 @@ void setSub(int* set0, const int* set1, int n)
 
 
 
-int main()
+int main11a()
 {
 	// Check Set
 	int* set0;
