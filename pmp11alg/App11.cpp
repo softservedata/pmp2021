@@ -3,15 +3,23 @@ using namespace std;
 
 void graphInc5(int**& matrix, int*& vector, int& n)
 {
-	matrix = new int* [] {
-			new int[] { 1, 2 },
-			new int[] { 0, 2 },
-			new int[] { 0, 1, 3 },
-			new int[] { 2, 4 },
-			new int[] { 3 }
+	n = 5;
+	matrix = new int* [n] {
+			new int[n] { 1, 2 },
+			new int[n] { 0, 2 },
+			new int[n] { 0, 1, 3 },
+			new int[n] { 2, 4 },
+			new int[n] { 3 }
 	};
 	vector = new int[] { 2, 2, 3, 2, 1};
-	n = 5;
+	//
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = vector[i]; j < n; j++)
+		{
+			matrix[i][j] = -1;
+		}
+	}
 }
 
 void graphMatDel(int** matrix, int n)
@@ -51,9 +59,9 @@ void setInit(int*& set, int n)
 	}
 }
 
-void setPrn(int* set, int n, const char* message)
+void setPrn(const int* set, int n, const char* message)
 {
-	cout << "\nMatrix " << message << endl;
+	cout << "\nSet " << message << endl;
 	for (int i = 0; i < n; i++)
 	{
 		cout << set[i] << "\t ";
@@ -66,11 +74,21 @@ int lastFreePosSet(const int* set, int n)
 	int result = n;
 	for (int i = 0; i < n; i++)
 	{
-		if (set[i] == -1)
+		if (set[i] < 0)
 		{
 			result = i;
 			break;
 		}
+	}
+	return result;
+}
+
+int getFirstElement(const int* set, int n)
+{
+	int result = -1;
+	if (n > 0)
+	{
+		result = set[0];
 	}
 	return result;
 }
@@ -88,7 +106,7 @@ void setAdd(int* set0, int element, int n)
 			break;
 		}
 	}
-	if (!isPresent)
+	if ((!isPresent) && (n0 < n))
 	{
 		set0[n0] = element;
 		n0 = n0 + 1;
@@ -101,6 +119,8 @@ void setAdd(int* set0, const int* set1, int n)
 	int n0 = lastFreePosSet(set0, n);
 	int n1 = lastFreePosSet(set1, n);
 	//
+	//setPrn(set0, n0, " set0 ");
+	//setPrn(set1, n1, " set1 ");
 	// TODO Update method to O(n)
 	for (int i1 = 0; i1 < n1; i1++)
 	{
@@ -113,10 +133,28 @@ void setAdd(int* set0, const int* set1, int n)
 				break;
 			}
 		}
-		if (!isPresent)
+		if ((!isPresent) && (n0 < n))
 		{
 			set0[n0] = set1[i1];
 			n0 = n0 + 1;
+		}
+	}
+}
+
+void setSub(int* set0, int element, int n)
+{
+	int n0 = lastFreePosSet(set0, n);
+	//
+	for (int i0 = 0; i0 < n0; i0++)
+	{
+		if (set0[i0] == element)
+		{
+			for (int j = i0; j < n0; j++)
+			{
+				set0[j] = set0[j + 1];
+			}
+			n0 = n0 - 1;
+			break;
 		}
 	}
 }
@@ -126,6 +164,9 @@ void setSub(int* set0, const int* set1, int n)
 	bool isPresent = false;
 	int n0 = lastFreePosSet(set0, n);
 	int n1 = lastFreePosSet(set1, n);
+	//
+	//setPrn(set0, n0, " setSub set0 ");
+	//setPrn(set1, n1, " setSub set1 ");
 	//
 	// TODO Update method to O(n)
 	for (int i0 = 0; i0 < n0; i0++)
@@ -146,14 +187,75 @@ void setSub(int* set0, const int* set1, int n)
 				set0[j] = set0[j + 1];
 			}
 			n0 = n0 - 1;
+			i0--;
 		}
 	}
 }
 
-
-
-int main11a()
+bool isSetEmpty(int* set, int n)
 {
+	return lastFreePosSet(set, n) == 0;
+}
+
+bool isSetFull(int* set, int n)
+{
+	return lastFreePosSet(set, n) == n;
+}
+
+bool isRoute(int** graph, int* vector, int n, int vert0, int vert1)
+{
+	// TODO Homework
+	return 0;
+}
+
+bool isGraphRoute(int** graph, int* vector, int n)
+{
+	int vertex = -1;
+	int* setTodo;
+	int* setVisited;
+	//
+	graphPrn(graph, vector, n, "isGraphRoute Graph ");
+	//
+	setInit(setTodo, n);
+	setInit(setVisited, n);
+	//
+	for (int i = 0; i < n; i++)
+	{
+		if (vector[i] > 0)
+		{
+			vertex = i;
+			break;
+		}
+	}
+	setAdd(setTodo, vertex, n);
+	while (!isSetEmpty(setTodo, n))
+	{
+		vertex = getFirstElement(setTodo, n);
+		if (vertex < 0)
+		{
+			break;
+	}
+		// TODO Work with Vertex
+		cout << " vertex = " << vertex << endl;
+		//
+		setAdd(setVisited, vertex, n);
+		//setPrn(graph[vertex], vector[vertex], " graph[vertex] ");
+		setAdd(setTodo, graph[vertex], n);
+		//setPrn(setTodo, n, " setAdd(setTodo, graph[vertex], vector[vertex]); setTodo ");
+		setSub(setTodo, setVisited, n);
+		//
+		//setPrn(setVisited, n, " setVisited ");
+		//setPrn(setTodo, n, " setSub(setTodo, setVisited, n); setTodo ");
+		//system("pause");
+	}
+	//
+	return isSetFull(setVisited, n);
+}
+
+
+int main()
+{
+	/*
 	// Check Set
 	int* set0;
 	int* set1;
@@ -168,18 +270,28 @@ int main11a()
 	setAdd(set0, 3, n);
 	setAdd(set1, 1, n);
 	setAdd(set1, 3, n);
+	setAdd(set1, 4, n);
 	setPrn(set0, n, "Add Elem set0");
 	setPrn(set1, n, "Add Elem set1");
 	//
 	//setAdd(set0, set1, n);
 	//setPrn(set0, n, "Add set0 = set0 + set1");
 	// 
-	setSub(set0, set1, n);
-	setPrn(set0, n, "Add set0 = set0 - set1");
+	//setSub(set0, set1, n);
+	//setPrn(set0, n, "Sub set0 = set0 - set1");
 	//
 	//
 	graphVecDel(set0);
 	graphVecDel(set1);
+	*/
+	//
+	int n;
+	int** graph;
+	int* vector;
+	//
+	graphInc5(graph, vector, n);
+	string result = isGraphRoute(graph, vector, n) > 0 ? "true" : "false";
+	cout << "isGraphRoute = " << result << endl;
 	//
 	cout << "\ndone" << endl;
 	system("pause");

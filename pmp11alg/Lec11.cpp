@@ -41,7 +41,7 @@ void deleteNode01(Node01*& x)
 
 //void f();
 
-int main()
+int main11al()
 {
 	Node01* a = NULL;
 	Node01* b = NULL;
