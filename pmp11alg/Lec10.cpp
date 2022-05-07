@@ -143,7 +143,7 @@ Person* personsSearchByName(Person** persons, int* nameIndex, int n, const strin
 	return person;
 }
 
-int main()
+int main10al()
 {
 	int n = 0;
 	Person** persons = NULL;
@@ -160,9 +160,9 @@ int main()
 	index = personsIndex(hash, n);
 	arrayPrint(index, n, "index");
 	//
-	SearchResult = personsSearchByName(persons, index, n, "ab");
+	//SearchResult = personsSearchByName(persons, index, n, "ab");
 	//SearchResult = personsSearchByName(persons, index, n, "f");
-	//SearchResult = personsSearchByName(persons, index, n, "j");
+	SearchResult = personsSearchByName(persons, index, n, "j");
 	//SearchResult = personsSearchByName(persons, index, n, "bb");
 	personPrint(SearchResult, "SearchResult");
 	//
