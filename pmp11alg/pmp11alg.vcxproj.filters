@@ -117,5 +117,8 @@
     <ClCompile Include="Lec11.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="App12.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

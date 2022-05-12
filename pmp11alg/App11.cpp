@@ -187,7 +187,7 @@ void setSub(int* set0, const int* set1, int n)
 				set0[j] = set0[j + 1];
 			}
 			n0 = n0 - 1;
-			i0--;
+			i0--; // Architecture Error
 		}
 	}
 }
@@ -234,7 +234,7 @@ bool isGraphRoute(int** graph, int* vector, int n)
 		if (vertex < 0)
 		{
 			break;
-	}
+		}
 		// TODO Work with Vertex
 		cout << " vertex = " << vertex << endl;
 		//
@@ -253,7 +253,7 @@ bool isGraphRoute(int** graph, int* vector, int n)
 }
 
 
-int main()
+int main11a()
 {
 	/*
 	// Check Set
