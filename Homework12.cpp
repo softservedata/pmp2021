@@ -50,11 +50,12 @@ int main(){
 
     graphInc7(graph, vector, n);
 
-    cout << "IsRoute between 4 and 2: " << boolalpha << isRoute(graph, vector, 4, 2) << endl;
-    cout << "IsRoute between 5 and 1: " << boolalpha << isRoute(graph, vector, 5, 1) << endl;
-    cout << "IsRoute between 6 and 5: " << boolalpha << isRoute(graph, vector, 6, 5) << endl;
-    cout << "IsRoute between 0 and 1: " << boolalpha << isRoute(graph, vector, 0, 1) << endl;
-    cout << "IsRoute between 3 and 5: " << boolalpha << isRoute(graph, vector, 3, 5) << endl;
+    cout << boolalpha;
+    cout << "IsRoute between 4 and 2: " << isRoute(graph, vector, 4, 2) << endl;
+    cout << "IsRoute between 5 and 1: " << isRoute(graph, vector, 5, 1) << endl;
+    cout << "IsRoute between 6 and 5: " << isRoute(graph, vector, 6, 5) << endl;
+    cout << "IsRoute between 0 and 1: " << isRoute(graph, vector, 0, 1) << endl;
+    cout << "IsRoute between 3 and 5: " << isRoute(graph, vector, 3, 5) << endl;
 
     matrix_delete(graph, n);
     array_delete(vector);
