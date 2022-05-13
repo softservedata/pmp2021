@@ -319,7 +319,7 @@ Stack<T> operator+(Stack<T> a, Stack<T> b) {
 }
 
 template<class ...Args>
-auto steck_joining(Args &&... args) {
+auto steck_joining(Args &&... args) { // об'єднання стеків
     return (args + ...); // fold вираз
 }
 
