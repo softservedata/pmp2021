@@ -9,6 +9,8 @@ bool isRoute(const vector<vector<int>> &graph, const int vertex_from, const int 
     return ranges::find(graph.at(vertex_from), vertex_to) != graph.at(vertex_from).end();
 }
 
+// Написати метод isRoute() для визначення зв’язку між вершинами.
+
 int main() {
     vector<vector<int>> adj_lis = {{2, 4},
                                    {2, 3},
