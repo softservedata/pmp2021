@@ -89,7 +89,7 @@ void arrStackPrint(ArrayStack* stack, const char* Message)
 	}
 }
 
-int main()
+int main12a()
 {
 	int n = 10;
 	ArrayStack* stack = NULL;
