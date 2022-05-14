@@ -113,6 +113,7 @@ int bottom(stack *&head){
     return head->data;
 }
 
+// Функція об'єднання двох стеків
 stack* union_two_stacks(stack*& stack1, stack*& stack2){
     stack* main_stack = nullptr;
 
