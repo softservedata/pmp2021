@@ -138,7 +138,7 @@ void arrNodeDelete(ArrNode* arrNode)
 	delete arrNode;
 }
 
-int main()
+int main12al()
 {
 	int n = 10;
 	int* arr = new int[] { 10, 5, 15, 3, 8, 12, 18, 9, 7, 13 };

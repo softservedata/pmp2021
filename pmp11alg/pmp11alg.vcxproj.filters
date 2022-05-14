@@ -123,5 +123,8 @@
     <ClCompile Include="Lec12.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Lec13.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
