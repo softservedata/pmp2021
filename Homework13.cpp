@@ -79,14 +79,13 @@ bool is_empty1(stack *head) {
 }
 
 // Виведення усіх вузлів
-void print_stack(stack *head) {
-    stack* temp = head;
-    if (temp == nullptr)
+void print_stack(stack *&head) {
+    if (head == nullptr)
         cout << "Empty list: error";
     else {
-        while (!is_empty1(temp)) {
-            cout << top(temp) << " ";
-            pop(temp);
+        while (!is_empty1(head)) {
+            cout << top(head) << " ";
+            pop(head);
         }
     }
     cout << endl;
@@ -109,26 +108,27 @@ stack* read_stack() {
     return stack;
 }
 
+// Повертає нажні дані зі стеку (першого вузла)
+int bottom(stack *&head){
+    return head->data;
+}
+
 stack* union_two_stacks(stack*& stack1, stack*& stack2){
     stack* main_stack = nullptr;
-    stack* temp = nullptr;
 
+    int elem = 0;
     while(!is_empty1(stack1)){
-        push(temp, top(stack1));
-        pop(stack1);
-    }
-    while(!is_empty1(temp)){
-        push(main_stack, top(temp));
-        pop(temp);
+        elem = bottom(stack1);
+        push(main_stack, elem);
+        stack1 = stack1->next;
     }
     while(!is_empty1(stack2)){
-        push(temp, top(stack2));
-        pop(stack2);
+        elem = bottom(stack2);
+        push(main_stack, elem);
+        stack2 = stack2->next;
     }
-    while(!is_empty1(temp)){
-        push(main_stack, top(temp));
-        pop(temp);
-    }
+    delete_stack(stack1);
+    delete_stack(stack2);
     return main_stack;
 }
 
@@ -141,5 +141,7 @@ int main() {
     stack* abc = union_two_stacks(ab, c);
 
     print_stack(abc);
+
+    delete_stack(abc);
     return 0;
 }
