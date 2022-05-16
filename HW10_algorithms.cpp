@@ -23,7 +23,7 @@ void print_graf(int**& graf, int n)
 		cout << endl;
 	}
 }
-void mosty_grafa(int** graf, int n)
+void finding(int** graf, int n)
 {
 	int count;
 	for (int i = 0; i < n; i++) {
@@ -60,7 +60,7 @@ int main010()
 	int n = 8;
 	int** graf = read_graf(n);
 	print_graf(graf, n);
-	mosty_grafa(graf, n);
+	finding (graf, n);
 	delete_graf(graf, n);
 	return 0;
 }
