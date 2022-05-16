@@ -60,7 +60,7 @@ int main010()
 	int n = 8;
 	int** graf = read_graf(n);
 	print_graf(graf, n);
-	finding (graf, n);
+	finding(graf, n);
 	delete_graf(graf, n);
 	return 0;
 }
