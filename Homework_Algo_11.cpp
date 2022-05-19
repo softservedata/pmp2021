@@ -45,6 +45,12 @@ int main()
     cout<<endl;
     print(uni, p1, "union");
     print(inter, p2, "intersection");
+    delete[] arr1;
+    delete[] arr2;
+    delete[] hash1;
+    delete[] hash2;
+    delete[] uni;
+    delete[] inter;
     return 0;
 }
 

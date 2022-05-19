@@ -35,6 +35,10 @@ int main()
     making_hash_with_elems(hash2, arr2, n2, delta);
     cout<<endl;
     cout << "set of arrays is equal = " << (equality(hash1, hash2, n) ? "true" : "false") << endl;
+    delete[] arr1;
+    delete[] arr2;
+    delete[] hash1;
+    delete[] hash2;
     return 0;
 }
 
