@@ -155,7 +155,7 @@ int main()
     ArrayStack* sum2=nullptr;
     sum2=summing(sum1, stack3);
     cout<<endl<<endl<<"its final stack"<<endl;
-    arrStackPrint(sum2, "sum of 1 and 2 and 3");
+    arrStackPrint(sum2, "sum of 1 and 2 and 3 ");
     arrStackDelete(stack1);
     arrStackDelete(stack2);
     arrStackDelete(stack3);

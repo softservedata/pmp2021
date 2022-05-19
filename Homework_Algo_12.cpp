@@ -7,7 +7,7 @@ void graphIndentification(int**& matrix, int*& vector, int& n)
         cout << "n = ";
         cin >> n;
     } while (n <= 0);
-    cout<<"reading vertex which are neighbouring to each other"<<endl;
+    cout<<"reading vertex which are neighbouring to each other "<<endl;
     matrix = new int* [n];
     for(int i=0;i<n;i++){
         matrix[i]=new int[n];
