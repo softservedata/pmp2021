@@ -160,6 +160,7 @@
     <ClCompile Include="App10.cpp" />
     <ClCompile Include="App11.cpp" />
     <ClCompile Include="App12.cpp" />
+    <ClCompile Include="App13.cpp" />
     <ClCompile Include="Lec02.cpp" />
     <ClCompile Include="Lec03a.cpp" />
     <ClCompile Include="Lec03b.cpp" />

@@ -38,7 +38,7 @@ void itemStackPush(SNode1*& stack, Item item)
 	stack = stemp;
 }
 
-void itemStackPushs(SNode1* stack, Item* item, int n)
+void itemStackPushs(SNode1*& stack, Item* item, int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -86,7 +86,7 @@ void itemStackPrint(SNode1* stack, const char* Message)
 }
 
 
-int main()
+int main13al()
 {
 	//int n = 10;
 	//int* arr = new int[] { 10, 5, 15, 3, 8, 12, 18, 9, 7, 13 };
