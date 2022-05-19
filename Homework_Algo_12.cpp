@@ -109,7 +109,6 @@ void setAdd(int* set0, int element, int n)
 {
     bool isPresent = false;
     int n0 = lastFreePosSet(set0, n);
-    //
     for (int i0 = 0; i0 < n0; i0++)
     {
         if (set0[i0] == element)
@@ -242,11 +241,14 @@ bool isRoute(int** graph, int* vector, int n, int vert0, int vert1)
         }
         setSub(setTodo, setVisited, n);
     }
+    delete[] setTodo;
+    delete[] setVisited;
     return check;
 }
 
 bool isGraphRoute(int** graph, int* vector, int n)
 {
+    bool check=false;
     int vertex = -1;
     int* setTodo;
     int* setVisited;
@@ -273,7 +275,10 @@ bool isGraphRoute(int** graph, int* vector, int n)
         setAdd(setTodo, graph[vertex], n);
         setSub(setTodo, setVisited, n);
     }
-    return isSetFull(setVisited, n);
+    check=isSetFull(setVisited, n);
+    delete[] setTodo;
+    delete[] setVisited;
+    return check;
 }
 
 void readingvert(int& vert, const char* Message, int n){
@@ -283,6 +288,12 @@ void readingvert(int& vert, const char* Message, int n){
     } while ((vert < 0) || (vert>=n));
 }
 
+void deleting(int**& graph, int n){
+    for(int i=0; i<n; i++){
+        delete[] graph[i];
+    }
+    delete[] graph;
+}
 
 int main()
 {
@@ -296,5 +307,7 @@ int main()
     readingvert(vert1, "vert1 = ", n);
     string result = isRoute(graph, vector, n, vert0, vert1) > 0 ? "true" : "false";
     cout <<endl<< "Is there route between vert0 and vert1?  =  " << result << endl;
+    delete[] vector;
+    deleting(graph, n);
     return 0;
 }
