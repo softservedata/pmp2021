@@ -12,7 +12,7 @@ struct SNode1
 };
 
 
-void itemStackDelete(SNode1* stack)
+void itemStackDelete(SNode1*& stack)
 {
 	SNode1* stemp = NULL;
 	while (stack != NULL)
@@ -24,7 +24,7 @@ void itemStackDelete(SNode1* stack)
 }
 
 // Initialization new Stack
-void itemStackCreate(SNode1*& stack, int n)
+void itemStackCreate(SNode1*& stack)
 {
 	itemStackDelete(stack);
 	stack = NULL;
@@ -51,7 +51,7 @@ bool itemStackIsEmpty(SNode1* stack)
 	return stack == NULL;
 }
 
-Item itemStackPop(SNode1* stack, bool* result = NULL)
+Item itemStackPop(SNode1*& stack, bool* result = NULL)
 {
 	Item item = NULL;
 	bool status = !itemStackIsEmpty(stack);
@@ -76,35 +76,40 @@ Item itemStackPop(SNode1* stack, bool* result = NULL)
 
 void itemStackPrint(SNode1* stack, const char* Message)
 {
-	//cout << "\nStack: " << Message << endl;
-	//cout << "n = " << stack->n << endl;
-	//cout << "sp = " << stack->sp << endl;
-	//for (int i = 0; i <= stack->sp; i++)
-	//{
-	//	cout << "element[" << i << "] = " << stack->data[i] << endl;
-	//}
+	cout << "\nStack: " << Message << endl;
+	//
+	SNode1* stemp = stack;
+	while (stemp != NULL)
+	{
+		cout << stemp->data << "  ";
+		stemp = stemp->link;
+	}
+	cout << endl;
 }
 
 
 int main13al()
+//int main()
 {
-	//int n = 10;
-	//int* arr = new int[] { 10, 5, 15, 3, 8, 12, 18, 9, 7, 13 };
-	//TNode2* tree = NULL;
-	//ArrNode* arrResult = NULL;
-	////
-	//arrPrint(arr, n, "Original Array:");
-	//treeAddArr(tree, arr, n);
-	//treePrint(tree, "Tree = ");
-	////
-	//arrNodeCreate(arrResult, n);
-	//treeReview(tree, arrResult);
-	//arrNodePrint(arrResult, "\narrResult =");
-	//arrNodeDelete(arrResult);
-	////
-	//treeDelete(tree);
-	//delete[] arr;
-
+	int n = 10;
+	int* arr = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	SNode1* stack = NULL;
+	//
+	itemStackCreate(stack);
+	//
+	itemStackPushs(stack, arr, n);
+	itemStackPrint(stack, "After Add of Elements");
+	//
+	cout << "\nelements = ";
+	while (!itemStackIsEmpty(stack))
+	{
+		cout << "  " << itemStackPop(stack);
+	}
+	cout << endl;
+	//
+	itemStackPrint(stack, "Before Delete");
+	itemStackDelete(stack);
+	delete[] arr;
 	//
 	cout << "\ndone" << endl;
 	system("pause");

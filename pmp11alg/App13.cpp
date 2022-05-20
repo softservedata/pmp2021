@@ -107,7 +107,7 @@ void listPrintArr(int* arr, int n, const char* message)
 	cout << endl;
 }
 
-int main()
+int main13a()
 {
 	int i = 0;
 	int n = 10;
