@@ -52,9 +52,9 @@ matr_type matrix_minus(matr_type &matr1, matr_type &matr2) {
     return res;
 }
 
-template<typename matr_type>
-matr_type matrix_mulpitply(matr_type &matr1, matr_type &matr2) {
-    matr_type res(int(matr1.size()), vector<int>(int(matr1.size()), 0));
+template<typename T>
+auto matrix_mulpitply(vector<vector<T>> &matr1, vector<vector<T>> &matr2) {
+    vector<vector<T>> res(int(matr1.size()), vector<T>(int(matr1.size()), 0));
     for (int i = 0; i < matr1.size(); ++i)
         for (int j = 0; j < matr2.size(); ++j)
             for (int k = 0; k < matr1.size(); ++k)
