@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 #include <cmath>
 #include <vector>
 
@@ -46,19 +45,24 @@ bool check_matrix(const vector<vector<double>> &matr) {
 template<typename matr_type>
 matr_type matrix_minus(matr_type &matr1, matr_type &matr2) {
     matr_type res(matr1);
-    for (int i = 0; i < res.size(); ++i)
-        for (int j = 0; j < res[0].size(); ++j)
+    for (int i = 0; i < res.size(); ++i) {
+        for (int j = 0; j < res[0].size(); ++j) {
             res[i][j] -= matr2[i][j];
+        }
+    }
     return res;
 }
 
 template<typename T>
 auto matrix_mulpitply(vector<vector<T>> &matr1, vector<vector<T>> &matr2) {
     vector<vector<T>> res(int(matr1.size()), vector<T>(int(matr1.size()), 0));
-    for (int i = 0; i < matr1.size(); ++i)
-        for (int j = 0; j < matr2.size(); ++j)
-            for (int k = 0; k < matr1.size(); ++k)
+    for (int i = 0; i < matr1.size(); ++i) {
+        for (int j = 0; j < matr2.size(); ++j) {
+            for (int k = 0; k < matr1.size(); ++k) {
                 res[i][j] += matr1[i][k] * matr2[k][j];
+            }
+        }
+    }
     return res;
 }
 
