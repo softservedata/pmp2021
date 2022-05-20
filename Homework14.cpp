@@ -83,6 +83,7 @@ void print_stack(stack *&head) {
     if (head == nullptr)
         cout << "Empty list: error";
     else {
+        cout << "List: ";
         while (!is_empty1(head)) {
             cout << top(head) << " ";
             pop(head);
@@ -113,20 +114,22 @@ int bottom(stack *&head){
     return head->data;
 }
 
-// Функція об'єднання двох стеків
+// Функція об'єднання двох стеків по черзі
 stack* union_two_stacks(stack*& stack1, stack*& stack2){
     stack* main_stack = nullptr;
 
     int elem = 0;
-    while(!is_empty1(stack1)){
-        elem = bottom(stack1);
-        push(main_stack, elem);
-        stack1 = stack1->next;
-    }
-    while(!is_empty1(stack2)){
-        elem = bottom(stack2);
-        push(main_stack, elem);
-        stack2 = stack2->next;
+    while(!is_empty1(stack1) || !is_empty1(stack2)){
+        if (!is_empty1(stack1)) {
+            elem = bottom(stack1);
+            push(main_stack, elem);
+            stack1 = stack1->next;
+        }
+        if (!is_empty1(stack2)){
+            elem = bottom(stack2);
+            push(main_stack, elem);
+            stack2 = stack2->next;
+        }
     }
     delete_stack(stack1);
     delete_stack(stack2);
@@ -136,13 +139,11 @@ stack* union_two_stacks(stack*& stack1, stack*& stack2){
 int main() {
     stack *a = read_stack();
     stack *b = read_stack();
-    stack *c = read_stack();
 
     stack* ab = union_two_stacks(a, b);
-    stack* abc = union_two_stacks(ab, c);
 
-    print_stack(abc);
+    print_stack(ab);
 
-    delete_stack(abc);
+    delete_stack(ab);
     return 0;
 }
