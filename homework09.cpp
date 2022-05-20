@@ -1,3 +1,6 @@
+// Прочитати з клавіатури квадратну матрицю.
+// Посортувати рядки матриці по зростанню на основі значень елементів першого стовпчика
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -5,26 +8,26 @@
 #include <ranges>
 #include <random>
 #include <chrono>
-#include <format> // MVS C++20 ++
+#include <format> // MVS C++20
 #include <bitset>
 
 using namespace std;
 
-template<typename Vec>
-void input_matrix(Vec &arr) {
+template<class T>
+void inputMatrix(vector<vector<T>> &arr) {
     for (auto &row: arr)
         for (auto &el: row)
             cin >> el;
 }
 
-template<typename Vec>
-void output_matrix(const Vec &arr) {
-    for (const auto &row: arr)
-        for (const auto &el: row)
+template<class T>
+void outputMatrix(const vector<vector<T>> &arr) {
+    for (auto &row: arr)
+        for (auto &el: row)
             cout << setw(2) << el << (&el == &row.back() ? '\n' : ' ');
 }
 
-template<typename Vec>
+template<class Vec>
 void mergeSort(Vec &a) { // loop, not recursion
     size_t block_size, block_it, l_it, r_it, l_border, r_border, m_border, i;
     Vec sort_block(a.size());
@@ -86,23 +89,21 @@ void test_mergeSort() {
     cout << "all tests are good: " << tests.all() << "\n";
 }
 
-// Прочитати з клавіатури квадратну матрицю.
-// Посортувати рядки матриці по зростанню на основі значень елементів першого стовпчика
 int main() {
     size_t n{};
     cout << "Enter n: ";
     cin >> n;
     vector<vector<int>> a(n, vector<int>(n));
     cout << "Enter square matrix A[n*n]:\n";
-    input_matrix(a);
-    output_matrix(a);
+    inputMatrix(a);
+    outputMatrix(a);
     bool manual = true;
     if (manual)
         mergeSort(a);
     else
         ranges::sort(a); // C++20
     cout << "Matrix A sorted by first column:\n";
-    output_matrix(a);
+    outputMatrix(a);
     // test_mergeSort();
     return 0;
 }

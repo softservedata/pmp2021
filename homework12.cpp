@@ -1,3 +1,5 @@
+// Написати метод isRoute() для визначення прямого зв’язку між вершинами.
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -8,8 +10,6 @@ using namespace std;
 bool isRoute(const vector<vector<int>> &graph, const int vertex_from, const int vertex_to) {
     return ranges::find(graph.at(vertex_from), vertex_to) != graph.at(vertex_from).end();
 }
-
-// Написати метод isRoute() для визначення зв’язку між вершинами.
 
 int main() {
     vector<vector<int>> adj_lis = {{2, 4},

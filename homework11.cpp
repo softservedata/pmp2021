@@ -1,3 +1,5 @@
+// Написати методи для об’єднання та перетину множин. Реалізувати алгоритми зі складністю O(n).
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -39,32 +41,32 @@ size_t getHashSize(const vector<int> &a, const vector<int> &b, const int delta) 
     return hashCode(max_el, delta) + 1;
 }
 
-auto getHashArray(const vector<int> &arr, const int delta, const size_t hash_size) {
+vector<bool> getHashArray(const vector<int> &arr, const int delta, const size_t hash_size) {
     vector<bool> hash(hash_size);
     for (auto &el: arr)
         hash[hashCode(el, delta)] = true;
     cout << "hash array:\n";
-    for (const auto el: hash)
+    for (auto &&el: hash)
         cout << el;
     cout << '\n';
     return hash;
 }
 
-auto operator&(const vector<bool> &a, const vector<bool> &b) {
+vector<bool> operator&(const vector<bool> &a, const vector<bool> &b) {
     vector<bool> c(a.size());
     for (size_t i = 0; i < a.size(); ++i)
         c[i] = a[i] & b[i];
     return c;
 }
 
-auto operator|(const vector<bool> &a, const vector<bool> &b) {
+vector<bool> operator|(const vector<bool> &a, const vector<bool> &b) {
     vector<bool> c(a.size());
     for (size_t i = 0; i < a.size(); ++i)
         c[i] = a[i] | b[i];
     return c;
 }
 
-auto getNewArray(const vector<bool> &hash, const int delta) {
+vector<int> getNewArray(const vector<bool> &hash, const int delta) {
     vector<int> arr;
     arr.reserve(hash.size()); // резервую місце в пам'яті про запас
     for (size_t i = 0; i < hash.size(); ++i)
@@ -72,8 +74,6 @@ auto getNewArray(const vector<bool> &hash, const int delta) {
             arr.emplace_back(i - delta); // push_back з конструктором
     return arr;
 }
-
-// Написати методи для об’єднання та перетину множин. Реалізувати алгоритми зі складністю O(n).
 
 int main() {
     auto arr1 = getArray(), arr2 = getArray();
