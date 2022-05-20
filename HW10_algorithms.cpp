@@ -1,50 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
-
-
-
-
-void graf_prn(int** matrix, int* vector, int n, const char* message)
-{
-    cout << "\nMatrix " << message << endl;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < vector[i]; j++)
-        {
-            cout << matrix[i][j] << "\t ";
-        }
-        cout << endl;
-    }
-}
-
-
-
-void print(const int* set, int n, const char* message)
-{
-    cout << "\nSet " << message << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << set[i] << "\t ";
-    }
-    cout << endl;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int** read_graf (int n)
 {
 	int** graf = new int* [] {
