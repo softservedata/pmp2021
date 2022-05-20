@@ -66,7 +66,7 @@ bool diagonal_advantage(double **matrix, int &n){
             if (j == i) ++j;
             sum += fabs(*(*(matrix + i) + j));
         }
-        if (fabs(d) < sum) return false;
+        if ((fabs(d) - sum) < +2e-16) return false;
         sum = 0;
     }
     return true;
