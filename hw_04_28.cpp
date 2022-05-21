@@ -1,4 +1,4 @@
-/*#include<iostream>
+#include<iostream>
 using namespace std;
 void setInit(int*& set, int n);
 void setPrn(const int* set, int n, const char* message);
@@ -150,4 +150,3 @@ void readMatrix(int& n, int* set) {
         setAdd(set, num, n);
     }
 }
-*/
