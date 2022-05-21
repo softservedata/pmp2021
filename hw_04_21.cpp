@@ -1,4 +1,4 @@
-/*#include<iostream>
+#include<iostream>
 using namespace std;
 int n;
 int** readGraph(int& n);
@@ -65,4 +65,4 @@ void bridgeFind(int start, bool visited[], int disc[], int low[], int parent[], 
                 low[start] = min(low[start], disc[v]);
         }
     }
-}*/
+}
