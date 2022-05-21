@@ -208,6 +208,48 @@ bool isRoute(int** graph, int* vector, int n, int vert0, int vert1)
 	return 0;
 }
 
+bool vertexInSet(int vert, int* arr, int n) {
+	bool check = false;
+	for (int i = 0; i < n; i++) {
+		if (arr[i] == vert) {
+			check = true;
+			break;
+		}
+	}
+	return check;
+}
+
+
+bool isRoute(int** graph, int* vector, int n, int vert0, int vert1)
+{
+	bool check = false;
+	int vertex;
+	int* setTodo;
+	int* setVisited;
+	setInit(setTodo, n);
+	setInit(setVisited, n);
+	vertex = vert0;
+	setAdd(setTodo, vertex, n);
+	while (!isSetEmpty(setTodo, n))
+	{
+		vertex = getFirstElement(setTodo, n);
+		if (vertex < 0)
+		{
+			break;
+		}
+		setAdd(setVisited, vertex, n);
+		setAdd(setTodo, graph[vertex], n);
+		if (vertexInSet(vert1, setTodo, n)) {
+			check = true;
+			break;
+		}
+		setSub(setTodo, setVisited, n);
+	}
+	delete[] setTodo;
+	delete[] setVisited;
+	return check;
+}
+
 bool isGraphRoute(int** graph, int* vector, int n)
 {
 	int vertex = -1;
@@ -252,6 +294,19 @@ bool isGraphRoute(int** graph, int* vector, int n)
 	return isSetFull(setVisited, n);
 }
 
+void readingvert(int& vert, const char* Message, int n) {
+	do {
+		cout << Message;
+		cin >> vert;
+	} while ((vert < 0) || (vert >= n));
+}
+
+void deleting(int**& graph, int n) {
+	for (int i = 0; i < n; i++) {
+		delete[] graph[i];
+	}
+	delete[] graph;
+}
 
 int main012()
 {
@@ -285,7 +340,7 @@ int main012()
 	graphVecDel(set1);
 	*/
 	//
-	int n;
+	/*int n;
 	int** graph;
 	int* vector;
 	//
@@ -293,7 +348,20 @@ int main012()
 	string result = isGraphRoute(graph, vector, n) > 0 ? "true" : "false";
 	cout << "isGraphRoute = " << result << endl;
 	//
-	cout << "\ndone" << endl;
+	cout << "\ndone" << endl;*/
+
+	int n;
+	int** graph;
+	int* vector;
+	int vert0, vert1;
+	graphInc5(graph, vector, n);
+	cout << "reading vert0 and vert1 for finding the route" << endl;
+	readingvert(vert0, "vert0 = ", n);
+	readingvert(vert1, "vert1 = ", n);
+	string result = isRoute(graph, vector, n, vert0, vert1) > 0 ? "true" : "false";
+	cout << endl << "Is there route between vert0 and vert1?  =  " << result << endl;
+	delete[] vector;
+	deleting(graph, n);
 	system("pause");
 	return 0;
 }
