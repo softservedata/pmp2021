@@ -1,5 +1,5 @@
-// В основній програмі створити три стеки, які об’єднати в один.
-// Початковий стан, та кінцевий результат виводити на екран (скористатися методом).
+// Задати дві черги з різною кількістю елементів (можна захардкодити). Об’єднати ці дві черги в одну чергуючи елементи.
+// Якщо елементи якоїсь черги закінчилися, тоді просто додаються всі елементи іншої черги. Надрукувати результівну чергу.
 
 #include <iostream>
 
@@ -74,23 +74,25 @@ public:
 };
 
 template<class T>
-class Stack { // сам стек
+class Queue { // сама черга
 private:
     DoublyLinkedList<T> container; // обгортає двонапрямний список
 public:
-    Stack();
+    Queue();
 
-    Stack(initializer_list<T> init);
+    Queue(initializer_list<T> init);
 
-    Stack(const Stack<T> &other);
+    Queue(const Queue<T> &other);
 
-    explicit Stack(const DoublyLinkedList<T> &other);
+    explicit Queue(const DoublyLinkedList<T> &other);
 
     bool empty() noexcept;
 
     size_t size() noexcept;
 
-    T &top() const;
+    T &front() const;
+
+    T &back() const;
 
     void push(const T &new_data) noexcept;
 
@@ -273,78 +275,77 @@ DoublyLinkedList<T>::~DoublyLinkedList() { // звільняю пам'ять в 
 }
 
 template<class T>
-Stack<T>::Stack() = default;
+Queue<T>::Queue() = default;
 
 template<class T>
-Stack<T>::Stack(const initializer_list<T> init) : container(init) {} // конструктор-ініціалізатор
+Queue<T>::Queue(const initializer_list<T> init) : container(init) {} // конструктор-ініціалізатор
 
 template<class T>
-Stack<T>::Stack(const Stack<T> &other) : container(other.container) {} // конструктор копіювання
+Queue<T>::Queue(const Queue<T> &other) : container(other.container) {} // конструктор копіювання
 
 template<class T>
-Stack<T>::Stack(const DoublyLinkedList<T> &other) : container(other) {} // конструктор зі списку
+Queue<T>::Queue(const DoublyLinkedList<T> &other) : container(other) {} // конструктор зі списку
 
 template<class T>
-bool Stack<T>::empty() noexcept {
+bool Queue<T>::empty() noexcept {
     return container.empty();
 }
 
 template<class T>
-size_t Stack<T>::size() noexcept {
+size_t Queue<T>::size() noexcept {
     return container.size();
 }
 
 template<class T>
-T &Stack<T>::top() const {
+T &Queue<T>::front() const {
+    return container.front();
+}
+
+template<class T>
+T &Queue<T>::back() const {
     return container.back();
 }
 
 template<class T>
-void Stack<T>::push(const T &new_data) noexcept {
+void Queue<T>::push(const T &new_data) noexcept {
     container.push_back(new_data);
 }
 
 template<class T>
-void Stack<T>::pop() {
-    container.pop_back();
+void Queue<T>::pop() {
+    container.pop_front();
 }
 
 template<class T>
-Stack<T> operator+(Stack<T> a, Stack<T> b) {
-    Stack<T> c(a), tmp;
+Queue<T> mergeQueues(Queue<T> a, Queue<T> b) {
+    Queue<T> c;
+    while (!(a.empty() || b.empty())) {
+        c.push(a.front());
+        c.push(b.front());
+        a.pop();
+        b.pop();
+    }
+    for (; !a.empty(); a.pop())
+        c.push(a.front());
     for (; !b.empty(); b.pop())
-        tmp.push(b.top());
-    for (; !tmp.empty(); tmp.pop())
-        c.push(tmp.top());
+        c.push(b.front());
     return c;
 }
 
-template<class ...Args>
-auto steck_joining(Args &&... args) { // об'єднання стеків
-    return (args + ...); // fold вираз
-}
-
 int main() {
-    Stack<int> a, b, c;
-    for (int d, i = 0; auto pStack: {&a, &b, &c}) {
-        cout << "Введіть рядок в стек " << static_cast<char>(++i + 64) << ": ";
-        for (; cin.peek() != '\n' && cin >> d;)
-            pStack->push(d);
-        cin.ignore();
-    }
+    Queue<int> q1 = {1, 2, 3, 4, 5}, q2 = {-1, -4, -9, -16, -25, -36, -49};
 
-    for (auto pStack: {&a, &b, &c})
-        for (auto tmp(*pStack); !tmp.empty(); tmp.pop())
-            cout << tmp.top() << (tmp.size() != 1 ? ' ' : '\n');
+    cout << "черга 1: ";
+    for (auto tmp(q1); !tmp.empty(); tmp.pop())
+        cout << tmp.front() << (tmp.size() != 1 ? ' ' : '\n');
+    cout << "черга 2: ";
+    for (auto tmp(q2); !tmp.empty(); tmp.pop())
+        cout << tmp.front() << (tmp.size() != 1 ? ' ' : '\n');
 
-    auto d = steck_joining(a, b, c);
-    for (auto tmp(d); !tmp.empty(); tmp.pop())
-        cout << tmp.top() << (tmp.size() != 1 ? ' ' : '\n');
+    auto q3 = mergeQueues(q1, q2);
+
+    cout << "черга 3: ";
+    for (auto tmp(q3); !tmp.empty(); tmp.pop())
+        cout << tmp.front() << (tmp.size() != 1 ? ' ' : '\n');
     return 0;
 }
-
-/*
-1 2 3
-4 5 6
-7 8 9
-*/
