@@ -2,30 +2,30 @@
 
 using namespace std;
 
-// Структура однонапревленого списку(стеку)
-struct stack {
+// Структура однонапревленого списку(стеку) - обгортка для черги
+struct Queue {
     int data;
-    stack *next;
+    Queue *next;
 
-    ~stack() {
+    ~Queue() {
         delete[] next;
     }
 };
 
-// Створення нового вузла у кінці стеку з даними
-void push(stack *&head, int node_data) {
+// Створення нового вузла у кінці черги з даними
+void push(Queue *&queue, int node_data) {
 
-    stack *newNode = new stack; // Створення вузла
+    Queue *newNode = new Queue; // Створення вузла
     newNode->data = node_data; // Створення даних
     newNode->next = nullptr;  // Встановлення нового вузла на нуловий вказівник
 
-    if (head == nullptr)    // Якщо вузол пустий, створення першого вузла
+    if (queue == nullptr)    // Якщо вузол пустий, створення першого вузла
     {
-        head = newNode;
+        queue = newNode;
         return;
     }
 
-    stack *last = head; // Тимчасовий вказівник
+    Queue *last = queue; // Тимчасовий вказівник
     while (last->next != nullptr) // Пересування до останнього вузла
         last = last->next;
 
@@ -33,18 +33,18 @@ void push(stack *&head, int node_data) {
 }
 
 // Видалення останнього вузла з однонапревленого списку
-void pop(stack *&head) {
-    if (head == nullptr)
+void pop(Queue *&queue) {
+    if (queue == nullptr)
         return;
 
-    if (head->next == nullptr) {
-        delete head;
-        head = nullptr;
+    if (queue->next == nullptr) {
+        delete queue;
+        queue = nullptr;
         return;
     }
 
     // Знаходження перед останнього вузла
-    stack *pre_last = head;
+    Queue *pre_last = queue;
     while (pre_last->next->next != nullptr)
         pre_last = pre_last->next;
 
@@ -55,16 +55,16 @@ void pop(stack *&head) {
     pre_last->next = nullptr;
 }
 
-// Видалення стеку
-void delete_stack(stack *&head) {
-    while (head != nullptr)
-        pop(head);
-    delete head;
+// Видалення черги
+void delete_queue(Queue *&queue) {
+    while (queue != nullptr)
+        pop(queue);
+    delete queue;
 }
 
-// Повертає верхні(дані з останнього вузла) дані зі стеку
-int top(stack *&head) {
-    stack *last = head;
+// Повертає верхні(дані з останнього вузла) дані зі черги
+int top(Queue *&queue) {
+    Queue *last = queue;
     if (last == nullptr) return 0;
     else
         while (last->next != nullptr) // Рух до останнього вузла
@@ -72,78 +72,86 @@ int top(stack *&head) {
     return last->data;
 }
 
-// Перевірка, чи стек пустий
-bool is_empty1(stack *head) {
-    if (head == nullptr) return true;
+// Повертає нажні дані зі черги (першого вузла)
+int bottom(Queue *&queue){
+    return queue->data;
+}
+
+// Перевірка, чи черга пуста
+bool is_empty1(Queue *queue) {
+    if (queue == nullptr) return true;
     else return false;
 }
 
-// Виведення усіх вузлів
-void print_stack(stack *&head) {
-    if (head == nullptr)
-        cout << "Empty list: error";
+// Читання черги
+void print_queue(Queue *&queue) {
+    Queue* temp = queue;
+    if (temp == nullptr)
+        cout << "Empty queue: error";
     else {
-        cout << "List: ";
-        while (!is_empty1(head)) {
-            cout << top(head) << " ";
-            pop(head);
+        cout << "Queue: ";
+        while (!is_empty1(temp)) {
+            cout << bottom(temp) << " ";
+            temp = temp->next;
         }
     }
+    delete_queue(temp);
     cout << endl;
 }
 
-// Створення стеку
-stack* read_stack() {
-    stack* stack = nullptr;
+// Створення черги
+Queue* read_queue() {
+    Queue* queue = nullptr;
 
     int n = 0;
     cout << "Enter quantity of elements:";
     cin >> n;
-    cout << "Enter a string:";
+    cout << "Enter a queue:";
 
     int temp;
     for (int i = 0; i < n; ++i){
         cin >> temp;
-        push(stack, temp);
+        push(queue, temp);
     }
-    return stack;
+    return queue;
 }
 
-// Повертає нажні дані зі стеку (першого вузла)
-int bottom(stack *&head){
-    return head->data;
-}
-
-// Функція об'єднання двох стеків по черзі
-stack* union_two_stacks(stack*& stack1, stack*& stack2){
-    stack* main_stack = nullptr;
+// Функція об'єднання двох черг по черзі
+Queue* union_two_queue(Queue*& queue1, Queue*& queue2){
+    Queue* main_stack = nullptr;
 
     int elem = 0;
-    while(!is_empty1(stack1) || !is_empty1(stack2)){
-        if (!is_empty1(stack1)) {
-            elem = bottom(stack1);
+    while(!is_empty1(queue1) || !is_empty1(queue2)){
+        if (!is_empty1(queue1)) {
+            elem = bottom(queue1);
             push(main_stack, elem);
-            stack1 = stack1->next;
+            queue1 = queue1->next;
         }
-        if (!is_empty1(stack2)){
-            elem = bottom(stack2);
+        if (!is_empty1(queue2)){
+            elem = bottom(queue2);
             push(main_stack, elem);
-            stack2 = stack2->next;
+            queue2 = queue2->next;
         }
     }
-    delete_stack(stack1);
-    delete_stack(stack2);
+    delete_queue(queue1);
+    delete_queue(queue2);
     return main_stack;
 }
 
 int main() {
-    stack *a = read_stack();
-    stack *b = read_stack();
+    Queue *a = read_queue();
+    Queue *b = read_queue();
 
-    stack* ab = union_two_stacks(a, b);
+    cout << "First ";
+    print_queue(a);
+    cout << "Second ";
+    print_queue(b);
 
-    print_stack(ab);
+    Queue* ab = union_two_queue(a, b);
 
-    delete_stack(ab);
+    cout << "United ";
+    print_queue(ab);
+
+    delete_queue(ab);
     return 0;
 }
