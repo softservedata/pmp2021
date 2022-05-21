@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 int main() {
     int a;
@@ -11,5 +11,3 @@ int main() {
         cout << "NO" << endl;
     }
 }
-
-*/
