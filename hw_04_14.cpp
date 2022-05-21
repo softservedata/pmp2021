@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -135,4 +135,4 @@ void matrixDelete(int**& matrix, int& n) {
         delete[] matrix[i];
     }
     delete[] matrix;
-}*/
+}
