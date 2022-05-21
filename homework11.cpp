@@ -5,10 +5,10 @@
 
 int main()
 {
-    int first[] = { 5, 10, 15, 20, 25 };
-    int second[] = { 50, 40, 30, 20, 10 };
+    int first[] = { 5, 15, 25, 35, 55 };
+    int second[] = { 10, 5, 55, 20, 30 };
     int n = sizeof(first) / sizeof(first[0]);
-    cout<< "sets:"<<endl;
+    cout<< "Sets example:"<<endl;
  
  
     for (int i = 0; i < n; i++)
