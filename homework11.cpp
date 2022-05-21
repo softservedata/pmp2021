@@ -1,6 +1,6 @@
-#include <algorithm> // std::set_union, std::sort
-#include <iostream> // std::cout
-#include <vector> // std::vector
+#include <algorithm> 
+#include <iostream> 
+#include <vector> 
  using namespace std;
 
 int main()
