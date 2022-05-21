@@ -1,4 +1,4 @@
-/*#include<iostream>
+#include<iostream>
 using namespace std;
 
 double* read(int n) {
@@ -128,4 +128,4 @@ int main()
     delete[]hash2;
     system("pause");
     return 0;
-}*/
+}
