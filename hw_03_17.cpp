@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 using namespace std;
 int main() {
     cout << "Enter size matrix 1: " << endl;
@@ -51,4 +51,3 @@ int main() {
 
     return 0;
 }
-*/
