@@ -34,6 +34,14 @@ int main()
     for (st = v.begin(); st != it; ++st)
         cout << ' ' << *st;
     cout << '\n';
+    it=set_intersection (first, first+5, second, second+5, v.begin());
+                                               // 10 20 0  0  0  0  0  0  0  0
+  v.resize(it-v.begin());                      // 10 20
+
+  cout << "The intersection :\n";
+  for (it=v.begin(); it!=v.end(); ++it)
+    cout << ' ' << *it;
+  cout << '\n';
     
     
  
