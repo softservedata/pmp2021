@@ -1,4 +1,4 @@
-/*#include <iostream>;
+#include <iostream>;
 
 using namespace std;
 int sum_2(int n, int m);
@@ -18,4 +18,4 @@ int sum_2(int n, int m)
         sum += sum_2(n - (m+2), );
     }
     return sum;
-}*/
+}
