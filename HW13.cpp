@@ -98,14 +98,22 @@ ArrayStack* union_two_stacks(ArrayStack*& stack1, ArrayStack*& stack2) {
 
     Element elem = 0;
     while (!arrStackIsEmpty(stack1)) {
-        elem = stack1->sp;
-        arrStackPush(stack, elem);
-        stack1 = stack1->data;
+        bool result = (stack1->sp < stack1->n - 1);
+        if (result)
+        {
+            stack1->sp++;
+            arrStackPush(stack, elem);
+            stack1->data[stack->sp] = elem;
+        }
     }
     while (!arrStackIsEmpty(stack2)) {
-        elem = stack1->sp;
-        arrStackPush(stack, elem);
-        stack2 = stack2->data;
+        bool result = (stack2->sp < stack2->n - 1);
+        if (result)
+        {
+            stack2->sp++;
+            arrStackPush(stack, elem);
+            stack2->data[stack->sp] = elem;
+        }
     }
     arrStackDelete(stack1);
     arrStackDelete(stack2);
