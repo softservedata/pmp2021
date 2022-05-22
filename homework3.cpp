@@ -48,17 +48,18 @@ int main()
     int s3 = 1;
     int sum1 = 0;
     for (int i = 1;i <= n;i++) {
-        for (int j = i;j <= i * i; j++) {
-            s3 *= j;
-        }
+        for (int j = i;j <= i * i; j++) s3 *= j;
+        
         sum1 += s3;
         s3 = 1;
     }
     cout << "(C) S = " << sum1 << endl;
+    
+  
+
             
             
             
 
     return 0;
-	
 }
