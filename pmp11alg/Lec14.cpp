@@ -184,7 +184,7 @@ void arrNodePrint(int* arr, int n, const char* message)
 }
 
 
-int main()
+int main14al()
 {
 	int n = 10;
 	int* arr = new int[] { 10, 5, 15, 3, 8, 12, 18, 9, 7, 13 };
