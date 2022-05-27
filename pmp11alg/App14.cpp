@@ -2,7 +2,7 @@
 using namespace std;
 
 
-int main()
+int main14a()
 {
 	/*
 	for (int i = 1; i < 5; i++) {

@@ -126,12 +126,13 @@ void treeStackPrint(TreeNode2* tree, const char* message)
 {
 	bool first = false;
 	TreeNode2* temp = NULL;
+	//
 	StackNode1* stack = NULL;
 	treeStackCreate(stack);
 	//
 	cout << message;
 	treeStackPush(stack, tree, true);
-	while (treeStackIsEmpty(stack))
+	while (!treeStackIsEmpty(stack))
 	{
 		temp = treeStackPop(stack, first);
 		if (first)
@@ -144,6 +145,11 @@ void treeStackPrint(TreeNode2* tree, const char* message)
 		}
 		else
 		{
+			cout << "  " << temp->data ; // TODO Use array
+			if (temp->right != NULL)
+			{
+				treeStackPush(stack, temp->right, true);
+			}
 		}
 	}
 	
@@ -184,7 +190,7 @@ void arrNodePrint(int* arr, int n, const char* message)
 }
 
 
-int main14al()
+int main()
 {
 	int n = 10;
 	int* arr = new int[] { 10, 5, 15, 3, 8, 12, 18, 9, 7, 13 };
@@ -192,7 +198,8 @@ int main14al()
 	//
 	arrNodePrint(arr, n, "Original Array:");
 	treeNodeAddArr(tree, arr, n);
-	treeRecPrint(tree, "Tree = ");
+	//treeRecPrint(tree, "Tree = ");
+	treeStackPrint(tree, "Tree = ");
 	//
 	//
 	treeRecDelete(tree);
