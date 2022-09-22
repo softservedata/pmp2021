@@ -70,6 +70,20 @@ public:
         cout << "Asignment: (" << re << ", " << im << ").\n";
     }
 
+    friend istream& operator>>(istream& in, Complex& date)
+    {
+        cout << "Input Complex:\nre = ";
+        in >> date.re;
+        cout << "im = ";
+        in >> date.im;
+        return in;
+    }
+
+    friend ostream& operator<<(ostream& out, const Complex& date)
+    {
+        out << "complex = (" << date.getRe() << ", " << date.getIm() << ")" << endl;
+        return out;
+    }
 };
 
 
@@ -89,7 +103,11 @@ int main()
     a = 1 + a + b;
     // 
     //
-    cout << "a = (" << a.getRe() << ", " << a.getIm() << ").\n";
+    //cout << "a = (" << a.getRe() << ", " << a.getIm() << ").\n";
+    cout << a;
+    //
+    cin >> b;
+    cout << b;
     //
 	cout << "done" << endl;
 	system("pause");
