@@ -87,7 +87,7 @@ public:
 };
 
 
-int main()
+int main01()
 {
     Complex a(1, 1);
     Complex b(2);
@@ -98,17 +98,20 @@ int main()
     //
     //a = *(a + b);
     //a = a + b;
-    //a = a + 1; // int to double; double to Complex; a.operator+(1);
+    a = a + 1; // int to double; double to Complex; a.operator+(1);
     //a = 1 + a;
-    a = 1 + a + b;
+    //a = 1 + a + b;
     // 
     //
     //cout << "a = (" << a.getRe() << ", " << a.getIm() << ").\n";
-    cout << a;
+    /*
+    //cout << a;
     //
     cin >> b;
     cout << b;
+    */
     //
 	cout << "done" << endl;
 	system("pause");
+    return 0;
 }
