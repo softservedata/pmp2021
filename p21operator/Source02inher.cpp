@@ -115,4 +115,5 @@ int main02()
 	// */
 	cout << "done" << endl;
 	system("pause");
+	return 0;
 }
