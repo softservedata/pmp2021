@@ -120,7 +120,7 @@ private:
 };
 
 
-int main()
+int main03()
 {
 	cout << "start" << endl;
 	//
@@ -137,23 +137,26 @@ int main()
 	a->m8();
 	delete a;
 	*/
-	//
+	// /*
 	A* b = new B();
 	cout << "b->i = " << b->i << endl; // Run from A; Architecture Error; Field i not virtual;
 	b->m1();
 	b->m2();
 	b->m3();
 	b->m4();
-	b->m5(); // Run m8() from B if ...
+	b->m5(); // Run m8() from B if ...; Architecture Error;
 	b->m6(); // from A
 	A::m6();
 	B::m6();
 	//b->m7(); // Compile Error
-	((B*)b)->m7(); // Runtime Error if class A
-	cout << "((B*)b)->i = " << ((B*)b)->i << endl;
+	if (typeid(B) == typeid(*b))
+	{
+		((B*)b)->m7(); // Runtime Error if class A
+		cout << "((B*)b)->i = " << ((B*)b)->i << endl;
+	}
 	b->m8(); // Run m8() from A; Architecture Error;
 	delete b;
-	//
+	// */
 	
 	// 
 	//
