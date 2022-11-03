@@ -35,6 +35,11 @@ public:
 		return "\nEmployee: name = " + getName() + ", id = " + (char)(getId() + 48);
 	}
 
+	bool operator<(Employee* other)
+	{
+		return this->id < other->id;
+	}
+
 	/*
 	friend ostream& operator<<(ostream& out, const Employee& date)
 	{
@@ -77,12 +82,13 @@ public:
 		return result;
 	}
 
-	Employee getMax(Employee* arr, int n)
+	Employee* getMax(Employee** arr, int n)
 	{
-		Employee result = arr[0];
+		Employee* result = arr[0];
 		for (int i = 0; i < n; i++)
 		{
-			//if (result < arr[i])
+			if (*result < arr[i])
+			//if (result->operator<())
 			{
 				result = arr[i];
 			}
@@ -93,21 +99,21 @@ public:
 
 int main()
 {
+	/*
 	Operation* operation = new Operation();
 	//
-	int n = 6;
+	int n = 4;
 	//int* arr = new int[] { 6, 3, 8, 2, 9, 1 };
-	Employee** arr = new Employee*[] { new Employee("Ivan", 4), new Employee("Petro", 2) };
-	//
+	Employee** arr = new Employee*[] { new Employee("Ivan", 4), new Employee("Petro", 2), new Employee("Steoan",5), new Employee("Ira", 3) };
 	//
 	cout << "Original Array:  ";
 	for (int i = 0; i < n; i++)
 	{
-		cout << arr[i]->toString() << "  ";
+		cout << arr[i]->toString() << endl;
 	}
 	cout << endl;
 	//
-	//cout << "max = " << operation->getMax(arr, n) << endl;
+	cout << "max = " << operation->getMax(arr, n)->toString() << endl;
 	//
 	for (int i = 0; i < n; i++)
 	{
@@ -116,6 +122,9 @@ int main()
 	//
 	delete[] arr;
 	delete operation;
+	*/
+	//
+
 	//
 	cout << "done" << endl;
 	system("pause");
