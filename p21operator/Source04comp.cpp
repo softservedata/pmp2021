@@ -141,7 +141,7 @@ public:
 
 };
 
-int main()
+int main04()
 {
 	//
 	Operation* operation = new Operation();
