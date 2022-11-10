@@ -83,7 +83,7 @@ public:
 	}
 };
 
-int main()
+int main05()
 {
 	cout << "start" << endl;
 	//
@@ -101,4 +101,5 @@ int main()
 	//
 	cout << "done" << endl;
 	system("pause");
+	return 0;
 }

@@ -144,6 +144,12 @@
     <ClCompile Include="Source03inher.cpp" />
     <ClCompile Include="Source04comp.cpp" />
     <ClCompile Include="Source05virt.cpp" />
+    <ClCompile Include="Source06vector.cpp" />
+    <ClCompile Include="Source07list.cpp" />
+    <ClCompile Include="Source08vec.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="input.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
